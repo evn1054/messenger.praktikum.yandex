@@ -1,0 +1,13 @@
+{{#> FormWrapper title="Регистрация"}}
+    <div class="registration-content">
+        {{> Input type="email" label="Почта" reqired="true"}}
+        {{> Input type="text" label="Логин" reqired="true"}}
+        {{> Input type="text" label="Имя" reqired="true"}}
+        {{> Input type="text" label="Фамилия" }}
+        {{> Input type="tel" label="Телефон" }}
+        {{> Input type="password" label="Пароль" reqired="true"}}
+        {{> Input type="password" label="Пароль (ещё раз)" reqired="true"}}
+    </div>
+    {{> Button label="Зарегистрироваться" type="primary" }}
+    {{> Button label="Войти" type="link" }}
+{{/FormWrapper}}

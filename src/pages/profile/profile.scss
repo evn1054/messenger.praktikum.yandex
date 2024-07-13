@@ -1,0 +1,34 @@
+@import "src/styles/variables";
+
+.profile {
+  display: flex;
+  justify-content: center;
+
+  &__wrapper {
+    width: $profile_width;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__avatar {
+    padding-top: 60px;
+  }
+
+  &__user-name {
+    padding-top: 21px;
+  }
+
+  &__main-info {
+    padding-top: 60px;
+  }
+
+  &__footer {
+    padding-top: 60px;
+
+    &__exit > a {
+      color: $error-color !important;
+    }
+  }
+}

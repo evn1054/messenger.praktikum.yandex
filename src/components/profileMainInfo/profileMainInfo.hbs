@@ -1,0 +1,15 @@
+<div class="profile-main-info">
+    <div class="profile-main-info__text-content">
+        <div class="profile-main-info__key">
+            {{#if isButton}}
+                {{> Button label=key type="profile-link" }}
+            {{else}}
+                {{key}}
+            {{/if}}
+        </div>
+        <div class="profile-main-info__value">{{value}}</div>
+    </div>
+    {{#unless isLast}}
+        <div class="profile-main-info__br"></div>
+    {{/unless}}
+</div>

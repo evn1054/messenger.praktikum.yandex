@@ -1,0 +1,26 @@
+@import "src/styles/variables";
+
+.profile-main-info {
+  width: $profile_width;
+  position: relative;
+  font-size: $font-size_005;
+  margin-bottom: 20px;
+
+  &__text-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__value {
+    color: $text-secondary-color;
+  }
+
+
+  &__br {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: $grey1;
+      position: absolute;
+      bottom: -10px;
+  }
+}

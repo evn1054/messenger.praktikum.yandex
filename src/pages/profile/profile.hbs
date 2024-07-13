@@ -1,0 +1,19 @@
+<div class="profile">
+    <div class="profile__wrapper">
+        <div class="profile__avatar">
+            {{> ProfileAvatar (profileInfo) }}
+        </div>
+        <div class="profile__user-name">
+            {{> UserName (profileInfo)}}
+        </div>
+
+        {{> ProfileMainInfoList (profileInfo)}}
+
+        <div class="profile__footer">
+            {{> ProfileMainInfo key="Изменить данные" isButton='true' }}
+            {{> ProfileMainInfo key="Изменить пароль" isButton='true' }}
+            {{> ProfileMainInfo key="Выйти" isButton='true' isLast='true' }}
+        </div>
+
+    </div>
+</div>

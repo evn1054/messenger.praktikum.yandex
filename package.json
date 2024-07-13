@@ -16,5 +16,9 @@
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-handlebars": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
+
 }

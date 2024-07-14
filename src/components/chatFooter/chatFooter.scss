@@ -29,6 +29,11 @@
     align-items: center;
   }
 
+  &__label {
+    width: 100%;
+    padding-right: 20px;
+  }
+
   &__input {
     background: $grey2;
     border-radius: $rounding_005;

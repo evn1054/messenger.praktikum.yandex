@@ -7,8 +7,20 @@
                 {{key}}
             {{/if}}
         </div>
-        <div class="profile-main-info__value">{{value}}</div>
+
+        <div class="profile-main-info__value">
+            {{#if isButton }}
+                {{value}}
+            {{else}}
+                {{#if isEdit }}
+                    {{> ProfileInput type=type name=name required=required maxlength=maxlength minlength=minlength}}
+                {{else}}
+                    {{value}}
+                {{/if}}
+            {{/if}}
+        </div>
     </div>
+
     {{#unless isLast}}
         <div class="profile-main-info__br"></div>
     {{/unless}}

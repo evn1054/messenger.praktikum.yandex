@@ -24,11 +24,8 @@
     padding-top: 60px;
   }
 
-  &__footer {
-    padding-top: 60px;
-
-    &__exit > a {
-      color: $error-color !important;
-    }
+  &__button {
+    width: 280px;
+    padding-top: 40px;
   }
 }

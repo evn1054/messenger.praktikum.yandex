@@ -15,3 +15,5 @@ export { UserName } from './userName';
 export { ProfileMainInfo } from './profileMainInfo';
 export { ProfileMainInfoList } from './profileMainInfoList';
 export { IconButton } from './iconButton';
+export { ProfileFooterInfo } from './profileFooterInfo';
+export { ProfileInput } from './profileInput';

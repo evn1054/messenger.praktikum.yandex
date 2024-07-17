@@ -1,0 +1,26 @@
+<div class="profile">
+    <div class="profile__wrapper">
+        <div class="profile__avatar">
+            {{> ProfileAvatar (profileInfo) }}
+        </div>
+        {{#unless isEdit}}
+            <div class="profile__user-name">
+                {{> UserName (profileInfo)}}
+            </div>
+        {{/unless}}
+
+        {{#if isPasswordEdit}}
+            {{> ProfileMainInfoList (profileInfo) isPasswordEdit=isPasswordEdit}}
+        {{else}}
+            {{> ProfileMainInfoList (profileInfo) isEdit=isEdit}}
+        {{/if}}
+
+        {{#if isEdit}}
+            <div class="profile__button">
+                {{> Button type="primary" label="Сохранить" }}
+            </div>
+        {{else}}
+            {{> ProfileFooterInfo }}
+        {{/if}}
+    </div>
+</div>

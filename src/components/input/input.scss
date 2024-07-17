@@ -1,0 +1,71 @@
+@import "src/styles/variables";
+
+.input {
+  padding: 10px;
+
+  &__container {
+    display: flex;
+    height: 38px;
+    flex-direction: column;
+    align-content: flex-end;
+  }
+
+  &__label {
+    transform: translateY(-21px);
+    color: $text-secondary-color;
+    font-size: $font-size_005;
+    font-weight: 500;
+    user-select: none;
+    transition: font-size 0.5s, transform 0.5s;
+  }
+
+  &__element {
+    border: none;
+    padding: 0 0 7px;
+    border-bottom: 1px solid $primary-color;
+    font-size: $font-size_005;
+    font-weight: 500;
+    color: $dark-color;
+  }
+
+  &__element:focus-visible {
+    outline: none;
+  }
+
+  &__text-error {
+    transform: translateY(-7px);
+    color: $error-color;
+    font-size: 8px;
+    font-weight: 400;
+    display: none;
+  }
+
+  &__element:not(:placeholder-shown) + &__label,
+  &__element:focus + &__label {
+    transform: translateY(-36px);
+    font-size: 9px;
+  }
+
+  &__error &__text-error {
+    display: block;
+  }
+
+  &__error &__element {
+    color: $error-color;
+  }
+
+  &__helper-text {
+    margin: 0;
+    min-height: 8px;
+    font-size: $font-size_001;
+    line-height: $font-size_001;
+    color: $error-color;
+    font-weight: 400;
+    opacity: 0;
+
+    &_show {
+      opacity: 1;
+    }
+  }
+
+}

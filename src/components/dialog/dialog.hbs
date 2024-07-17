@@ -1,0 +1,18 @@
+<li class="dialog__container">
+    <div class="dialog__container-hover"></div>
+    <div class="dialog__item">
+        {{> Avatar image=this.dialogImage name=this.dialogName}}
+    </div>
+    <div class="dialog__item dialog__content">
+        <div class="dialog__item-row">
+            <label for="" class="dialog__name">{{this.dialogName}}</label>
+            <div class="dialog__date">{{ dateTransform this.dialogDate }}</div>
+        </div>
+        <label for="" class="dialog__description">{{this.dialogDescription}}</label>
+    </div>
+    {{#if this.dialogNotification}}
+        <div class="dialog__notification-circle">
+            <div class="dialog__notification">{{this.dialogNotification}}</div>
+        </div>
+    {{/if}}
+</li>

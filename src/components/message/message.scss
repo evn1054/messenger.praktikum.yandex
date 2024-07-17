@@ -1,0 +1,113 @@
+@import "src/styles/variables";
+
+.message {
+  box-sizing: border-box;
+  list-style: none;
+  max-width: 400px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  align-self: flex-end;
+
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
+
+  &_is-not-owner {
+    align-self: flex-start;
+  }
+
+  &_is-img {
+    border-radius: $rounding_003;
+    border: 1px solid $grey1;
+    max-height: 400px;
+    max-width: 400px;
+    position: relative;
+  }
+
+  &__text {
+    margin: 0;
+    display: inline-block;
+    padding: 11px;
+    font-size: $font-size_004;
+    color: $dark-color;
+    font-weight: 500;
+    line-height: 15px;
+    background-color: $grey3;
+    border-radius: $rounding_003 $rounding_003 $rounding_003 0;
+  }
+
+  &__text_owner {
+    background-color: $additional-color;
+    border-radius: $rounding_003 $rounding_003 0 $rounding_003;
+    float: right;
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__time {
+    position: relative;
+    color: $text-secondary-color;
+    font-size: $font-size_002;
+    font-weight: 500;
+    line-height: 9px;
+    text-align: right;
+    margin: 6px 13px 0 14px;
+    float: right;
+
+    &::before {
+      //background-color: red;
+      padding-left: 3px;
+    }
+
+    &_wrapper {
+      padding: 3px 15px 3px 7px;
+      background-color: $dark-color2;
+      position: relative;
+      display: block;
+      float: right;
+      border-radius: $rounding_004;
+      bottom: 25px;
+      right: 11px;
+    }
+
+    &_is-read::before {
+      //padding-right: 4px;
+      content: "";
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      position: absolute;
+
+      width: 10px;
+      height: 4px;
+      bottom: 2px;
+      left: 25px;
+      background-image: url(src/assets/images/isRead-icon.svg);
+    }
+
+    &_is-not-read::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      //padding-left: 2px;
+      height: 4px;
+      background-image: url(src/assets/images/isNotRead-icon.svg);
+      color: red;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      position: absolute;
+      bottom: 2px;
+      left: 25px;
+    }
+
+    &_is-img {
+      color: $light-color;
+      margin: 0;
+    }
+  }
+}

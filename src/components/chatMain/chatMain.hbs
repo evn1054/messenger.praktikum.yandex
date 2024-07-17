@@ -1,0 +1,8 @@
+<div class="main">
+    <p class="main__date">19 июня</p>
+    <ul class="main__messages">
+        {{#each this.messages}}
+            {{> Message this=this.messages}}
+        {{/each}}
+    </ul>
+</div>

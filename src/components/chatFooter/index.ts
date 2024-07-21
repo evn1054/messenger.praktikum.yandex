@@ -1,2 +1,3 @@
 import './chatFooter.scss';
-export {default as ChatFooter} from './chatFooter.hbs?raw';
+
+export { default as ChatFooter } from './chatFooter.hbs?raw';

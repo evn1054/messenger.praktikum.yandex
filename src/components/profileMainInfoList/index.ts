@@ -1,1 +1,1 @@
-export {default as ProfileMainInfoList} from './profileMainInfoList.hbs?raw';
+export { default as ProfileMainInfoList } from './profileMainInfoList.hbs?raw';

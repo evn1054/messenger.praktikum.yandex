@@ -1,2 +1,3 @@
 import './burgerMenu.scss';
-export { default as BurgerMenu } from './burgerMenu.hbs?raw'
+
+export { default as BurgerMenu } from './burgerMenu.hbs?raw';

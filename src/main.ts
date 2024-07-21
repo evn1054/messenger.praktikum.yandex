@@ -15,20 +15,20 @@ type PageContext = {
     [key: string]: any;
 };
 
-type PageEntry = [Handlebars.TemplateDelegate, PageContext];
+type PageEntry = [Handlebars.TemplateDelegate<any>, PageContext];
 
 interface PagesMap {
     [key: string]: PageEntry;
 }
 
 const pages: PagesMap = {
-  login: [Pages.LoginPage, {}],
-  registration: [Pages.RegistrationPage, {}],
-  pageNotFound: [Pages.PageNotFound, {}],
-  serverError: [Pages.ServerError, {}],
-  chatList: [Pages.ChatList, {}],
-  nav: [Pages.NavigatePage, {}],
-  profile: [Pages.ProfilePage, {}],
+  login: [Pages.LoginPage as Handlebars.TemplateDelegate<any>, {}],
+  registration: [Pages.RegistrationPage as Handlebars.TemplateDelegate<any>, {}],
+  pageNotFound: [Pages.PageNotFound as Handlebars.TemplateDelegate<any>, {}],
+  serverError: [Pages.ServerError as Handlebars.TemplateDelegate<any>, {}],
+  chatList: [Pages.ChatList as Handlebars.TemplateDelegate<any>, {}],
+  nav: [Pages.NavigatePage as Handlebars.TemplateDelegate<any>, {}],
+  profile: [Pages.ProfilePage as Handlebars.TemplateDelegate<any>, {}],
 };
 
 Object.entries(Components).forEach(([name, component]) => {

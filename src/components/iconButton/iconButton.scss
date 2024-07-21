@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import url('src/styles/variables.scss');
 
 .icon_button {
   background: $primary-color;
@@ -11,6 +11,6 @@
   align-items: center;
 
   &__backward {
-    transform: rotate(180deg)
+    transform: rotate(180deg);
   }
 }

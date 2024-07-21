@@ -1,100 +1,100 @@
-@import "src/styles/variables";
+@import url('src/styles/variables.scss');
 
 .dialog {
-    &__container {
-        position: relative;
-        border-top: 1px solid $grey1;
-        padding: 10px;
-        display: flex;
-        cursor: pointer;
+  &__container {
+    position: relative;
+    border-top: 1px solid $grey1;
+    padding: 10px;
+    display: flex;
+    cursor: pointer;
 
-        &:last-child {
-            border-bottom: 1px solid $grey1;
-        }
-
-        &-hover {
-            width: 100%;
-            height: 63px;
-            z-index: 1;
-            opacity: 0;
-            background-color: $additional-color;
-            margin: -10px 0 0 -10px;
-            transition: all .3s linear;
-            position: absolute;
-            top: 12px;
-        }
-
-        &:hover > .dialog__container-hover {
-            opacity: 1;
-        }
+    &:last-child {
+      border-bottom: 1px solid $grey1;
     }
 
-    &__item {
-        cursor: pointer;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-
-        &-circle {
-            width: 47px;
-            height: 47px;
-            border-radius: $rounding_001;
-            background-color: $grey2;
-            margin-right: 10px;
-        }
-
-        &:nth-child(3) {
-            width: 100%;
-        }
-
-        &-row {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            padding: 0 0 4px;
-        }
+    &-hover {
+      width: 100%;
+      height: 63px;
+      z-index: 1;
+      opacity: 0;
+      background-color: $additional-color;
+      margin: -10px 0 0 -10px;
+      transition: all 0.3s linear;
+      position: absolute;
+      top: 12px;
     }
 
-    &__content {
-        padding: 0 0 0 10px;
+    &:hover > .dialog__container-hover {
+      opacity: 1;
+    }
+  }
+
+  &__item {
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+
+    &-circle {
+      width: 47px;
+      height: 47px;
+      border-radius: $rounding_001;
+      background-color: $grey2;
+      margin-right: 10px;
     }
 
-    &__name {
-        cursor: pointer;
-        font-weight: 600;
-        font-size: $font-size_005;
-        line-height: $font-size_005;
-        color: $dark-color;
+    &:nth-child(3) {
+      width: 100%;
     }
 
-    &__description {
-        font-weight: 500;
-        font-size: $font-size_004;
-        line-height: $font-size_007;
-        color: $text-secondary-color;
+    &-row {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 0 4px;
     }
+  }
 
-    &__date {
-        color: $text-secondary-color;
-        font-size: $font-size_002;
+  &__content {
+    padding: 0 0 0 10px;
+  }
+
+  &__name {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: $font-size_005;
+    line-height: $font-size_005;
+    color: $dark-color;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: $font-size_004;
+    line-height: $font-size_007;
+    color: $text-secondary-color;
+  }
+
+  &__date {
+    color: $text-secondary-color;
+    font-size: $font-size_002;
+  }
+
+  &__notification {
+    color: $light-color;
+    font-size: $font-size_003;
+
+    &-circle {
+      position: absolute;
+      z-index: 9999;
+      bottom: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      background-color: $primary-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: $rounding_001;
     }
-
-    &__notification {
-        color: $light-color;
-        font-size: $font-size_003;
-
-        &-circle {
-            position: absolute;
-            z-index: 9999;
-            bottom: 10px;
-            right: 10px;
-            width: 20px;
-            height: 20px;
-            background-color: $primary-color;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: $rounding_001;
-        }
-    }
+  }
 }

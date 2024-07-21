@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import url('src/styles/variables.scss');
 
 .profile-input {
   position: relative;
@@ -26,7 +26,8 @@
     text-align: end;
     color: $text-secondary-color;
 
-    &:focus-visible, &:focus {
+    &:focus-visible,
+    &:focus {
       outline: none;
     }
   }

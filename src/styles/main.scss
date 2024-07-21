@@ -1,10 +1,10 @@
-@import "/src/vendor/normalize.scss";
-@import "/src/vendor/fonts";
+@import url('/src/vendor/normalize.scss');
+@import url('/src/vendor/fonts');
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
 }

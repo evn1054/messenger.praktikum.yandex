@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import url('src/styles/variables.scss');
 
 .profile-avatar {
   position: relative;
@@ -19,10 +19,7 @@
   &::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: black;
     opacity: 0;
     transition: opacity 0.3s;
@@ -30,6 +27,7 @@
   }
 
   // Затемнение
+
   &:hover::after {
     opacity: 0.5;
   }

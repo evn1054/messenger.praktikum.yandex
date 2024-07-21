@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import url('src/styles/variables.scss');
 
 .button {
   background-color: initial;
@@ -16,7 +16,8 @@
     font-size: $font-size_005;
   }
 
-  &__link, &__profile-link {
+  &__link,
+  &__profile-link {
     color: $primary-color;
     font-size: $font-size_003;
     text-align: center;
@@ -42,7 +43,7 @@
 
       &::after,
       &::before {
-        content: "";
+        content: '';
         background-color: $light-color;
         display: inline-block;
         width: 7px;

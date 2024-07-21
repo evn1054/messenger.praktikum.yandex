@@ -1,8 +1,24 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-sass-guidelines"
+  ],
+  "plugins": [
+    "stylelint-scss"
+  ],
   "rules": {
     "indentation": 2,
     "max-empty-lines": 1,
-    "no-eol-whitespace": true
+    "no-eol-whitespace": true,
+    "scss/dollar-variable-pattern": "^[a-z0-9]+([a-z0-9-]*[a-z0-9]+)?$",
+    "font-family-no-duplicate-names": true,
+    "selector-no-qualifying-type": true,
+    "declaration-property-value-disallowed-list": {
+      "border": [
+        "none"
+      ]
+    },
+    "max-nesting-depth": 1,
+    "block-no-empty": true
   }
 }

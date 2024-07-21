@@ -1,19 +1,18 @@
-@import "src/styles/variables";
+@import url('src/styles/variables.scss');
 
 .avatar {
-    width: 47px;
-    height: 47px;
-    border-radius: $rounding_001;
-    background-color: $grey2;
-    object-fit: cover;
+  width: 47px;
+  height: 47px;
+  border-radius: $rounding_001;
+  background-color: $grey2;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    &-img {
-      max-width: 100%;
-      max-height: 100%;
-    }
+  &-img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }

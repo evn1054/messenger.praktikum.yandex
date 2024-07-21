@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import url('src/styles/variables.scss');
 
 .profile-main-info {
   width: $profile_width;
@@ -12,6 +12,7 @@
     align-items: center;
     padding: 0 0 10px;
   }
+
   &__value {
     color: $text-secondary-color;
     width: 60%;
@@ -19,9 +20,9 @@
   }
 
   &__br {
-      content: '';
-      width: 100%;
-      height: 1px;
-      background-color: $grey1;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: $grey1;
   }
 }

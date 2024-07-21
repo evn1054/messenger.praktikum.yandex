@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import url('src/styles/variables.scss');
 
 .message {
   box-sizing: border-box;
@@ -75,27 +75,26 @@
 
     &_is-read::before {
       //padding-right: 4px;
-      content: "";
+      content: '';
       display: inline-block;
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
       position: absolute;
-
       width: 10px;
       height: 4px;
       bottom: 2px;
       left: 25px;
-      background-image: url(src/assets/images/isRead-icon.svg);
+      background-image: url('src/assets/images/isRead-icon.svg');
     }
 
     &_is-not-read::before {
-      content: "";
+      content: '';
       display: inline-block;
       width: 10px;
       //padding-left: 2px;
       height: 4px;
-      background-image: url(src/assets/images/isNotRead-icon.svg);
+      background-image: url('src/assets/images/isNotRead-icon.svg');
       color: red;
       background-repeat: no-repeat;
       background-position: center;

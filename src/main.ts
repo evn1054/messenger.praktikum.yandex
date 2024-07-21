@@ -11,14 +11,24 @@ export interface IDialogData {
     'dialogNotification'?: string;
 }
 
-const pages: unknown = {
-  login: [Pages.LoginPage],
-  registration: [Pages.RegistrationPage],
-  pageNotFound: [Pages.PageNotFound],
-  serverError: [Pages.ServerError],
-  chatList: [Pages.ChatList],
-  nav: [Pages.NavigatePage],
-  profile: [Pages.ProfilePage],
+type PageContext = {
+    [key: string]: any;
+};
+
+type PageEntry = [Handlebars.TemplateDelegate, PageContext];
+
+interface PagesMap {
+    [key: string]: PageEntry;
+}
+
+const pages: PagesMap = {
+  login: [Pages.LoginPage, {}],
+  registration: [Pages.RegistrationPage, {}],
+  pageNotFound: [Pages.PageNotFound, {}],
+  serverError: [Pages.ServerError, {}],
+  chatList: [Pages.ChatList, {}],
+  nav: [Pages.NavigatePage, {}],
+  profile: [Pages.ProfilePage, {}],
 };
 
 Object.entries(Components).forEach(([name, component]) => {
@@ -26,9 +36,15 @@ Object.entries(Components).forEach(([name, component]) => {
 });
 
 function navigate(page: string) {
-  const [source, context] = pages[page];
-  const container = document.getElementById('app')!;
-  container.innerHTML = Handlebars.compile(source)(context);
+  // Проверяем, существует ли страница в объекте pages
+  const pageEntry = pages[page];
+  if (pageEntry) {
+    const [source, context] = pageEntry;
+    const container = document.getElementById('app')!;
+    container.innerHTML = Handlebars.compile(source)(context);
+  } else {
+    throw Error(`Page "${page}" not found`);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => navigate('nav'));

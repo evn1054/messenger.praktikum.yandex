@@ -1,0 +1,8 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "indentation": 2,
+    "max-empty-lines": 1,
+    "no-eol-whitespace": true
+  }
+}

@@ -11,7 +11,7 @@ export interface IDialogData {
     'dialogNotification'?: string;
 }
 
-const pages = {
+const pages: unknown = {
   login: [Pages.LoginPage],
   registration: [Pages.RegistrationPage],
   pageNotFound: [Pages.PageNotFound],
@@ -72,11 +72,14 @@ Handlebars.registerHelper('dateTransform', (inputDate: string) => {
   const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
   return `${parsedDate.getDate()} ${months[parsedDate.getMonth()]} ${parsedDate.getFullYear()}`;
 });
-Handlebars.registerHelper('dateArrSort', (dataArray: IDialogData[]) => dataArray.sort((a, b) => {
-  const dateA: Date = new Date(a.dialogDate);
-  const dateB: Date = new Date(b.dialogDate);
-  return dateB - dateA;
-}));
+Handlebars.registerHelper(
+  'dateArrSort',
+  (dataArray: IDialogData[]) => dataArray.sort((a, b) => {
+    const dateA: Date = new Date(a.dialogDate);
+    const dateB: Date = new Date(b.dialogDate);
+    return dateB.getTime() - dateA.getTime();
+  }),
+);
 
 Handlebars.registerHelper('currentChatData', () => ({
   info: {

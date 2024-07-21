@@ -4,11 +4,11 @@ import * as Pages from './pages';
 import './styles/main.scss';
 
 export interface IDialogData {
-  'dialogImage'?: string;
-  'dialogName': string;
-  'dialogDescription': string;
-  'dialogDate': string;
-  'dialogNotification'?: string;
+    'dialogImage'?: string;
+    'dialogName': string;
+    'dialogDescription': string;
+    'dialogDate': string;
+    'dialogNotification'?: string;
 }
 
 const pages = {
@@ -26,7 +26,6 @@ Object.entries(Components).forEach(([name, component]) => {
 });
 
 function navigate(page: string) {
-  // @ts-ignore
   const [source, context] = pages[page];
   const container = document.getElementById('app')!;
   container.innerHTML = Handlebars.compile(source)(context);
@@ -35,8 +34,7 @@ function navigate(page: string) {
 document.addEventListener('DOMContentLoaded', () => navigate('nav'));
 
 document.addEventListener('click', (e) => {
-  // @ts-ignore
-  const page = e.target.getAttribute('data-page');
+  const page = (e.target as HTMLElement).getAttribute('data-page');
   if (page) {
     navigate(page);
 
@@ -74,18 +72,11 @@ Handlebars.registerHelper('dateTransform', (inputDate: string) => {
   const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
   return `${parsedDate.getDate()} ${months[parsedDate.getMonth()]} ${parsedDate.getFullYear()}`;
 });
-Handlebars.registerHelper('dateArrSort', (dataArray: IDialogData[]) => {
-  if (!Array.isArray(dataArray)) {
-    console.error('Data is not an array');
-    return;
-  }
-
-  return dataArray.sort((a, b) => {
-    const dateA: Date = new Date(a.dialogDate);
-    const dateB: Date = new Date(b.dialogDate);
-    return dateB - dateA;
-  });
-});
+Handlebars.registerHelper('dateArrSort', (dataArray: IDialogData[]) => dataArray.sort((a, b) => {
+  const dateA: Date = new Date(a.dialogDate);
+  const dateB: Date = new Date(b.dialogDate);
+  return dateB - dateA;
+}));
 
 Handlebars.registerHelper('currentChatData', () => ({
   info: {
@@ -131,7 +122,7 @@ Handlebars.registerHelper('profileInfo', () => ({
   email: 'pochta@yandex.ru',
   login: 'ivanivanov',
 }));
-Handlebars.registerHelper('chatListData', ():IDialogData[] => [
+Handlebars.registerHelper('chatListData', (): IDialogData[] => [
   {
     dialogImage: 'https://via.placeholder.com/600/f66b97',
     dialogName: 'Пользователь 1',

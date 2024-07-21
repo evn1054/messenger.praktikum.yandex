@@ -1,9 +1,9 @@
 @import url('src/styles/variables.scss');
 
 .profile-main-info {
-  width: $profile_width;
+  width: $profile-width;
   position: relative;
-  font-size: $font-size_005;
+  font-size: $font-size-005;
   margin-bottom: 20px;
 
   &__text-content {

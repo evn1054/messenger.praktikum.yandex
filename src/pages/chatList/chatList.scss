@@ -32,7 +32,7 @@
 
     &-text {
       color: $text-secondary-color;
-      font-size: $font-size_004;
+      font-size: $font-size-004;
       padding: 0 8px 0 0;
     }
 
@@ -54,7 +54,7 @@
     width: 100%;
 
     &__text {
-      font-size: $font-size_004;
+      font-size: $font-size-004;
       color: $text-secondary-color;
     }
 
@@ -65,10 +65,6 @@
       width: 100%;
       align-items: unset;
     }
-  }
-
-  &__header {
-
   }
 
   &__main {

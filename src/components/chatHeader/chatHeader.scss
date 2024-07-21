@@ -16,13 +16,13 @@
     &__name {
       padding: 0 0 0 10px;
       font-weight: 600;
-      font-size: $font-size_005;
+      font-size: $font-size-005;
     }
 
     &__avatar {
       width: 34px;
       height: 34px;
-      border-radius: $rounding_001;
+      border-radius: $rounding-001;
       background-color: $grey2;
       object-fit: cover;
     }

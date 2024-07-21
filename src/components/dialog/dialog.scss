@@ -38,7 +38,7 @@
     &-circle {
       width: 47px;
       height: 47px;
-      border-radius: $rounding_001;
+      border-radius: $rounding-001;
       background-color: $grey2;
       margin-right: 10px;
     }
@@ -62,26 +62,26 @@
   &__name {
     cursor: pointer;
     font-weight: 600;
-    font-size: $font-size_005;
-    line-height: $font-size_005;
+    font-size: $font-size-005;
+    line-height: $font-size-005;
     color: $dark-color;
   }
 
   &__description {
     font-weight: 500;
-    font-size: $font-size_004;
-    line-height: $font-size_007;
+    font-size: $font-size-004;
+    line-height: $font-size-007;
     color: $text-secondary-color;
   }
 
   &__date {
     color: $text-secondary-color;
-    font-size: $font-size_002;
+    font-size: $font-size-002;
   }
 
   &__notification {
     color: $light-color;
-    font-size: $font-size_003;
+    font-size: $font-size-003;
 
     &-circle {
       position: absolute;
@@ -94,7 +94,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: $rounding_001;
+      border-radius: $rounding-001;
     }
   }
 }

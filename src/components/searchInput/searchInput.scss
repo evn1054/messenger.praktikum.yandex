@@ -15,10 +15,10 @@
     outline: none;
     border-color: transparent;
     border-width: 1px;
-    border-radius: $rounding_007;
+    border-radius: $rounding-007;
     font-weight: 500;
-    font-size: $font-size_004;
-    line-height: $font-size_004;
+    font-size: $font-size-004;
+    line-height: $font-size-004;
     color: $dark-color;
     background-color: $grey2;
     transition: 0.3s border-color;
@@ -29,9 +29,9 @@
     }
 
     &::placeholder {
-      font-size: $font-size_004;
+      font-size: $font-size-004;
       font-weight: 500;
-      line-height: $font-size_004;
+      line-height: $font-size-004;
       color: $text-secondary-color;
       text-align: center;
     }

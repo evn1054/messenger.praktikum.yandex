@@ -2,24 +2,24 @@
 
 .button {
   background-color: initial;
-  border: none;
+  border: 0;
   font-weight: 500;
   display: block;
   width: 100%;
   padding: 12px 0;
-  border-radius: $rounding_002;
+  border-radius: $rounding-002;
   cursor: pointer;
 
   &__primary {
     background-color: $primary-color;
     color: $light-color;
-    font-size: $font-size_005;
+    font-size: $font-size-005;
   }
 
   &__link,
   &__profile-link {
     color: $primary-color;
-    font-size: $font-size_003;
+    font-size: $font-size-003;
     text-align: center;
   }
 
@@ -31,7 +31,7 @@
     background-color: $primary-color;
     height: 28px;
     width: 28px;
-    border-radius: $rounding_001;
+    border-radius: $rounding-001;
 
     &__left,
     &__right {

@@ -17,7 +17,7 @@
   }
 
   &_is-img {
-    border-radius: $rounding_003;
+    border-radius: $rounding-003;
     border: 1px solid $grey1;
     max-height: 400px;
     max-width: 400px;
@@ -28,17 +28,17 @@
     margin: 0;
     display: inline-block;
     padding: 11px;
-    font-size: $font-size_004;
+    font-size: $font-size-004;
     color: $dark-color;
     font-weight: 500;
     line-height: 15px;
     background-color: $grey3;
-    border-radius: $rounding_003 $rounding_003 $rounding_003 0;
+    border-radius: $rounding-003 $rounding-003 $rounding-003 0;
   }
 
   &__text_owner {
     background-color: $additional-color;
-    border-radius: $rounding_003 $rounding_003 0 $rounding_003;
+    border-radius: $rounding-003 $rounding-003 0 $rounding-003;
     float: right;
   }
 
@@ -50,7 +50,7 @@
   &__time {
     position: relative;
     color: $text-secondary-color;
-    font-size: $font-size_002;
+    font-size: $font-size-002;
     font-weight: 500;
     line-height: 9px;
     text-align: right;
@@ -58,7 +58,6 @@
     float: right;
 
     &::before {
-      //background-color: red;
       padding-left: 3px;
     }
 
@@ -68,7 +67,7 @@
       position: relative;
       display: block;
       float: right;
-      border-radius: $rounding_004;
+      border-radius: $rounding-004;
       bottom: 25px;
       right: 11px;
     }
@@ -92,10 +91,9 @@
       content: '';
       display: inline-block;
       width: 10px;
-      //padding-left: 2px;
       height: 4px;
       background-image: url('src/assets/images/isNotRead-icon.svg');
-      color: red;
+      color: $error-color;
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;

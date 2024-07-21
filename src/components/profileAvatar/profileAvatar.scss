@@ -7,23 +7,23 @@
   align-items: center;
   height: 130px;
   width: 130px;
-  border-radius: $rounding_001;
+  border-radius: $rounding-001;
   background-color: $grey2;
 
   &__img {
     object-fit: contain;
     overflow: hidden;
-    border-radius: $rounding_001;
+    border-radius: $rounding-001;
   }
 
   &::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: black;
+    background: $dark-color;
     opacity: 0;
     transition: opacity 0.3s;
-    border-radius: $rounding_001;
+    border-radius: $rounding-001;
   }
 
   // Затемнение
@@ -38,12 +38,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: $light-color;
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none; // Чтобы текст не блокировал события мыши
     text-align: center;
-    font-size: $font-size_005;
+    font-size: $font-size-005;
   }
 
   &:hover &__hover-text {

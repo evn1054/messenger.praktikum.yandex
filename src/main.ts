@@ -11,24 +11,14 @@ export interface IDialogData {
     'dialogNotification'?: string;
 }
 
-type PageContext = {
-    [key: string]: any;
-};
-
-type PageEntry = [Handlebars.TemplateDelegate<any>, PageContext];
-
-interface PagesMap {
-    [key: string]: PageEntry;
-}
-
-const pages: PagesMap = {
-  login: [Pages.LoginPage as Handlebars.TemplateDelegate<any>, {}],
-  registration: [Pages.RegistrationPage as Handlebars.TemplateDelegate<any>, {}],
-  pageNotFound: [Pages.PageNotFound as Handlebars.TemplateDelegate<any>, {}],
-  serverError: [Pages.ServerError as Handlebars.TemplateDelegate<any>, {}],
-  chatList: [Pages.ChatList as Handlebars.TemplateDelegate<any>, {}],
-  nav: [Pages.NavigatePage as Handlebars.TemplateDelegate<any>, {}],
-  profile: [Pages.ProfilePage as Handlebars.TemplateDelegate<any>, {}],
+const pages = {
+  login: [Pages.LoginPage],
+  registration: [Pages.RegistrationPage],
+  pageNotFound: [Pages.PageNotFound],
+  serverError: [Pages.ServerError],
+  chatList: [Pages.ChatList],
+  nav: [Pages.NavigatePage],
+  profile: [Pages.ProfilePage],
 };
 
 Object.entries(Components).forEach(([name, component]) => {
@@ -36,15 +26,9 @@ Object.entries(Components).forEach(([name, component]) => {
 });
 
 function navigate(page: string) {
-  // Проверяем, существует ли страница в объекте pages
-  const pageEntry = pages[page];
-  if (pageEntry) {
-    const [source, context] = pageEntry;
-    const container = document.getElementById('app')!;
-    container.innerHTML = Handlebars.compile(source)(context);
-  } else {
-    throw Error(`Page "${page}" not found`);
-  }
+  const [source, context] = pages[page];
+  const container = document.getElementById('app')!;
+  container.innerHTML = Handlebars.compile(source)(context);
 }
 
 document.addEventListener('DOMContentLoaded', () => navigate('nav'));

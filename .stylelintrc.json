@@ -1,14 +1,1 @@
-{
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-sass-guidelines",
-    "stylelint-order"
-  ],
-  "plugins": [
-    "stylelint-scss"
-  ],
-  "rules": {
-    "max-nesting-depth": null,
-    "selector-class-pattern": null
-  }
-}
+

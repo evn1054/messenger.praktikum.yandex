@@ -28,7 +28,7 @@ Object.entries(Components).forEach(([name, component]) => {
   Handlebars.registerPartial(name, template);
 });
 
-function navigate(page: string) {
+function navigate(page: PageKeys) {
   const [source, context] = pages[page];
   const container = document.getElementById('app')!;
   container.innerHTML = Handlebars.compile(source)(context);
@@ -37,7 +37,7 @@ function navigate(page: string) {
 document.addEventListener('DOMContentLoaded', () => navigate('nav'));
 
 document.addEventListener('click', (e) => {
-  const page = (e.target as HTMLElement).getAttribute('data-page');
+  const page = (e.target as HTMLElement).getAttribute('data-page') as PageKeys;
   if (page) {
     navigate(page);
 

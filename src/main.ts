@@ -11,7 +11,9 @@ export interface IDialogData {
     'dialogNotification'?: string;
 }
 
-const pages = {
+type PageKeys = 'login' | 'registration' | 'pageNotFound' | 'serverError' | 'chatList' | 'nav' | 'profile';
+
+const pages: Record<PageKeys, unknown[]> = {
   login: [Pages.LoginPage],
   registration: [Pages.RegistrationPage],
   pageNotFound: [Pages.PageNotFound],

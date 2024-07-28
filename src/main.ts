@@ -22,7 +22,8 @@ const pages = {
 };
 
 Object.entries(Components).forEach(([name, component]) => {
-  Handlebars.registerPartial(name, component);
+  const template = typeof component === 'string' ? Handlebars.compile(component) : component;
+  Handlebars.registerPartial(name, template);
 });
 
 function navigate(page: string) {

@@ -1,16 +1,16 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .icon_button {
   background: $primary-color;
   width: 28px;
   height: 28px;
-  border-radius: $rounding_001;
-  border: none;
+  border-radius: $rounding-001;
+  border: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 
   &__backward {
-    transform: rotate(180deg)
+    transform: rotate(180deg);
   }
 }

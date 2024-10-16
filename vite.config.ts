@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import * as path from 'node:path';
+import handlebars from 'vite-plugin-handlebars';
 
 export default defineConfig({
   root: '.',
@@ -16,6 +17,8 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  // plugins: [handlebars({})],
+  // assetsInclude: ['**/*.hbs'],
   css: {
     preprocessorOptions: {
       scss: {},

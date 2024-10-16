@@ -1,9 +1,9 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .profile-main-info {
-  width: $profile_width;
+  width: $profile-width;
   position: relative;
-  font-size: $font-size_005;
+  font-size: $font-size-005;
   margin-bottom: 20px;
 
   &__text-content {
@@ -12,6 +12,7 @@
     align-items: center;
     padding: 0 0 10px;
   }
+
   &__value {
     color: $text-secondary-color;
     width: 60%;
@@ -19,9 +20,9 @@
   }
 
   &__br {
-      content: '';
-      width: 100%;
-      height: 1px;
-      background-color: $grey1;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: $grey1;
   }
 }

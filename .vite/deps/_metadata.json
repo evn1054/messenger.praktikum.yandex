@@ -1,0 +1,15 @@
+{
+  "hash": "d004d889",
+  "configHash": "62826f74",
+  "lockfileHash": "364acf22",
+  "browserHash": "c00fbff8",
+  "optimized": {
+    "handlebars": {
+      "src": "../../node_modules/handlebars/dist/cjs/handlebars.js",
+      "file": "handlebars.js",
+      "fileHash": "51924255",
+      "needsInterop": true
+    }
+  },
+  "chunks": {}
+}

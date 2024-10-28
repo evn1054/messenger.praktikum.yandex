@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars';
-import * as Components from './components';
+import * as Components from '@components';
 import * as Pages from './pages';
 import './styles/main.scss';
 
@@ -30,6 +30,7 @@ Object.entries(Components).forEach(([name, component]) => {
 
 function navigate(page: PageKeys) {
   const [source, context] = pages[page];
+  console.log('source >>>>>>', source, context, pages[page]);
   const container = document.getElementById('app')!;
   container.innerHTML = Handlebars.compile(source)(context);
 }

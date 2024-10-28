@@ -1,3 +1,3 @@
 import './formWrapper.scss';
 
-export { default as FormWrapper } from './formWrapper.hbs?raw';
+export { FormWrapper } from './formWrapper.ts';

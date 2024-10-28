@@ -21,16 +21,25 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
       "@components/*": [
         "src/components/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
       ],
       "@assets/*": [
         "src/assets/*"
       ],
       "@styles/*": [
         "src/styles/*"
+      ],
+      "@core/*": [
+        "src/core/*"
+      ],
+      "@features/*": [
+        "src/features/*"
       ]
     }
   },

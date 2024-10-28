@@ -1,71 +1,79 @@
+import Link from '@components/Link';
+import IndexLayout from '@components/layout/Index';
+import Nav from '@components/Nav/index';
 import { renderDOM } from './utils/render';
-import IndexLayout from './components/layout/Index';
-import Link from './components/Link';
-import Page from './pages/IndexPage';
 
-import Nav from './components/Nav/index';
+import './styles/main.scss';
 
-const nav = new Nav('ul', {
+const nav = new Nav({
+
   items: [
-    { url: '/', title: 'Главная' },
-    { url: '/login', title: 'Вход' },
-    { url: '/registration', title: 'Регистрация' },
-    { url: '/pageNotFound', title: '404' },
-    { url: '/serverError', title: '500' },
-    { url: '/chatList', title: 'Список чатов' },
-    { url: '/profile', title: 'Профиль' },
+    // new Link('li', {
+    //   url: '/',
+    //   title: 'Главная',
+    //   attr: {
+    //     class: 'link',
+    //   },
+    // }),
+    new Link({
+      url: '/login',
+      title: 'Вход',
+      attr: {
+        class: 'link',
+      },
+    }, 'li'),
+    // new Link('li', {
+    //   url: '/registration',
+    //   title: 'Регистрация',
+    //   attr: {
+    //     class: 'link',
+    //   },
+    // }),
+    // new Link('li', {
+    //   url: '/pageNotFound',
+    //   title: '404',
+    //   attr: {
+    //     class: 'link',
+    //   },
+    // }),
+    // new Link('li', {
+    //   url: '/serverError',
+    //   title: '500',
+    //   attr: {
+    //     class: 'link',
+    //   },
+    // }),
+    // new Link('li', {
+    //   url: '/chatList',
+    //   title: 'Список чатов',
+    //   attr: {
+    //     class: 'link',
+    //   },
+    // }),
+    // new Link('li', {
+    //   url: '/profile',
+    //   title: 'Профиль',
+    //   attr: {
+    //     class: 'link',
+    //   },
+    // }),
   ],
-
-  /*
-                                      items: [
-                                          new Link('li', { url: '/', title: 'Главная'}),
-                                          new Link('li', { url: '/form', title: 'Формой'})
-                                      ],
-                                      */
 
   events: {
     click: (e) => {
-      console.log('Nav link clicked');
       e.preventDefault();
       e.stopPropagation();
-      // if(e.target && e.target.getAttribute('href'))
-      // {
-      //     console.log('Nav link clicked');
-      //     e.preventDefault();
-      //     e.stopPropagation();
-      // }
-      // else console.log('No link clicked');
     },
   },
-});
-
-const content = new Page(
-  'div',
-  {
-    text: 'Некий текст сожержимого страницы',
-  },
-);
+}, 'ul');
 
 const page = new IndexLayout(
-  'div',
   {
     nav,
-    title: 'Заголовок',
-    content,
     attr: {
       class: 'page',
     },
   },
 );
-
-window.page = page;
-window.content = content;
-window.changePageContent = () => {
-  const newContent = new Page('div', {
-    text: 'Какой-то другой текст',
-  });
-
-  page.setProps({ content: newContent });
-};
 
 renderDOM('.app', page);

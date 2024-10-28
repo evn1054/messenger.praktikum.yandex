@@ -1,4 +1,4 @@
-@import 'src/styles/variables';
+@import '@styles/variables';
 
 .button {
   background-color: initial;
@@ -10,7 +10,7 @@
   border-radius: $rounding-002;
   cursor: pointer;
 
-  &__primary {
+  &__primary, &__submit {
     background-color: $primary-color;
     color: $light-color;
     font-size: $font-size-005;

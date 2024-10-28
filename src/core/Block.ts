@@ -1,6 +1,6 @@
 import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
-import EventBus from './EventBus';
+import EventBus from './EventBus.js';
 
 export default class Block {
   static EVENTS = {
@@ -26,13 +26,17 @@ export default class Block {
 
   _setUpdate = false;
 
+  _oldInnerHTMLValue;
+
   // constructor(tagName = 'div', propsAndChildrens: Record<string, unknown> = {}) {
-  constructor(tagName = 'div', propsAndChilds = {}) {
+  // constructor(propsAndChilds = {}, tagName = 'div') {
+  constructor(propsAndChilds = {}, tagName = 'div') {
     const { children, props, lists } = this.getChildren(propsAndChilds);
 
     this._eventBus = new EventBus();
     this._id = makeUUID();
-    this._children = this.makePropsProxy(children);
+    // this._children = this.makePropsProxy(children);
+    this._children = children;
     this._lists = this.makePropsProxy(lists);
     this._props = this.makePropsProxy({ ...props, __id: this._id });
     this._meta = { tagName, props };
@@ -63,8 +67,7 @@ export default class Block {
 
   createDocumentElement(tagName) {
     const element = document.createElement(tagName);
-    if (this._props.settings?.withInternalId) element.setAttribute('data-id', this._id);
-
+    element.setAttribute('data-id', this._id);
     return element;
   }
 
@@ -75,6 +78,7 @@ export default class Block {
     this._element.appendChild(block);
     this.addAttribute();
     this.addEvents();
+    if (this._oldInnerHTMLValue) this._element.children[0].children[0].children[0].value = this._oldInnerHTMLValue; //  Такая реализация, потому что целевой input вложен в обертки
   }
 
   render() {
@@ -115,6 +119,10 @@ export default class Block {
     return { children, props, lists };
   }
 
+  getElement() {
+    return this._element;
+  }
+
   compile(template, props) {
     if (typeof props === 'undefined') props = this._props;
 
@@ -133,7 +141,8 @@ export default class Block {
 
     Object.values(this._children).forEach((children) => {
       const stub = fragment.content.querySelector(`[data-id="${children._id}"]`);
-      if (stub) stub.replaceWith(children.getContent());
+      if (stub) stub.replaceWith(children.getContent()); // так было у Коли
+      // if (stub) stub.replaceWith(children.getElement());
     });
 
     Object.entries(this._lists).forEach(([key, listItem]) => {
@@ -169,6 +178,7 @@ export default class Block {
   }
 
   _componentDidUpdate(oldProps, newProps) {
+    this._oldInnerHTMLValue = oldProps.oldInnerHTMLValue;
     const isReRender = this.componentDidUpdate(oldProps, newProps);
     if (isReRender) this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
@@ -237,7 +247,7 @@ export default class Block {
 
   makePropsProxy(props) {
     return new Proxy(props, {
-      get(target, props) {
+      get(target, props) { // TODO: сотри эту функцию, она не используется нигде
         const value = target[props];
         return typeof value === 'function' ? value.bind(target) : value;
       },

@@ -1,3 +1,3 @@
-import './input.scss';
+import '@components/input/input.scss';
 
-export { default as Input } from './input.hbs?raw';
+export { Input } from '@components/input/input.ts';

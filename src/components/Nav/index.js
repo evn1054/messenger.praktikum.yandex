@@ -1,22 +1,68 @@
-import tpl from './tpl';
-import Block from '../../core/Block';
+import Block from '@core/Block.ts';
+import './Nav.scss';
+import { LoginPage } from '@pages';
+
+export const ROUTES = {
+  // Home = '/',
+  // Profile = '/profile',
+  // ChangeInformation = '/change-information',
+  // ChangePassword = '/change-password',
+  // Registration = '/registration',
+  login: '/login',
+  // NotFound = '/404',
+  // ServerError = '/500',
+  // Logout = '/logout',
+};
+
+export const PAGES = {
+  // [ROUTES.Home]: HomePage,
+  // [ROUTES.Profile]: ProfilePage,
+  // [ROUTES.ChangeInformation]: ChangeInformationPage,
+  // [ROUTES.ChangePassword]: ChangePasswordPage,
+  // [ROUTES.Registration]: RegistrationPage,
+  [ROUTES.login]: LoginPage,
+  // [ROUTES.NotFound]: Error404Page,
+  // [ROUTES.ServerError]: Error500Page,
+};
+
+const pages = {
+  // login: [Pages.LoginPage],
+  login: LoginPage,
+  // registration: [Pages.RegistrationPage],
+  // pageNotFound: [Pages.PageNotFound],
+  // serverError: [Pages.ServerError],
+  // chatList: [Pages.ChatList],
+  // nav: [Pages.NavigatePage],
+  // profile: [Pages.ProfilePage],
+};
+
+export function navigate(route) {
+  const root = document.getElementById('app');
+
+  const PageBlock = pages[route];
+  const page = new PageBlock();
+  root.innerHTML = '';
+  root.append(page.getElement());
+  page.dispatchComponentDidMount();
+}
 
 export default class Nav extends Block {
   render() {
-    console.log('Nav render');
-    // return this.compile(tpl)
     return this.compile('{{{items}}}');
   }
 
   addEvents() {
     super.addEvents();
     this._element.querySelectorAll('a').forEach((a) => {
-      //     a.addEventListener('click', e => {
-      //         e.preventDefault();
-      //         e.stopPropagation();
-      //         console.log('Link clicked');
-      //     })
-      a.addEventListener('click', this._props.events.click);
+      a.addEventListener('click', (e) => {
+        const page = (e.target).getAttribute('href').slice(1);
+        if (page) {
+          navigate(page);
+
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      });
     });
   }
 }

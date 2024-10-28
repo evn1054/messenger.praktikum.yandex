@@ -1,0 +1,16 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+
+  > ul {
+    display: flex;
+    justify-content: space-between;
+
+    > .link > a {
+      text-decoration: none;
+    }
+  }
+}

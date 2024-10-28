@@ -1,15 +1,13 @@
-<div class="input">
+<div class="input {{#if status}}input__{{status}}{{/if}}">
     <label class="input__container">
         <input
                 class="input__element"
                 placeholder=""
-                type={{type}}
-                minlength={{minlength}}
-                maxlength={{maxlength}}
-                required={{required}}
                 name={{name}}
+                type={{type}}
+
         />
-        <span class="input__label">{{label}}</span>
+        <span class="input__label {{#if status}}input__isValid_{{status}}{{/if}}">{{label}}</span>
     </label>
-    <p class="input__helper-text"></p>
+    <p class="input__helper-text">{{help}}</p>
 </div>

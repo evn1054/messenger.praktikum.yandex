@@ -1,9 +1,8 @@
-import Block from '../../core/Block';
+import Block from '@core/Block.ts';
 import tpl from './tpl';
 
 export default class IndexPage extends Block {
   render() {
-    console.log('Page render');
     return this.compile(tpl);
   }
 }

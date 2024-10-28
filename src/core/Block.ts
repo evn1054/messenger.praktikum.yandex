@@ -1,6 +1,6 @@
 import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
-import EventBus from './EventBus.js';
+import EventBus from './EventBus.ts';
 
 export interface BaseProps {
     events?: Partial<Record<string, (event: Event) => void>>;
@@ -50,7 +50,7 @@ export default class Block<Props extends BaseProps> {
   }
 
   init() {
-    this._element = this.createDocumentElement(this._meta?.tagName);
+    this._element = this.createDocumentElement(this._meta.tagName);
     this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 

@@ -1,8 +1,10 @@
+export type Callback = (...args: unknown[]) => void;
+
 export default class EventBus {
-  _events = {};
+  _events: Record<string, Callback[]> = {};
 
   // attach
-  on(event, callback) {
+  on(event: string, callback: Callback) {
     if (!this._events[event]) {
       this._events[event] = [];
     }
@@ -11,23 +13,23 @@ export default class EventBus {
   }
 
   // detach
-  off(event, callback) {
+  off(event: string, callback: Callback) {
     if (!this._events[event]) {
       throw new Error(`Нет события: ${event}`);
     }
 
     this._events[event] = this._events[event].filter(
-      (event) => event !== callback,
+      (item) => item !== callback,
     );
   }
 
-  emit(event, ...args) {
+  emit(event: string, ...args: unknown[]) {
     if (!this._events[event]) {
       throw new Error(`Нет события: ${event}`);
     }
 
-    this._events[event].forEach((event) => {
-      event(...args);
+    this._events[event].forEach((item) => {
+      item(...args);
     });
   }
 }

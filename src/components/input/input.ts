@@ -1,13 +1,13 @@
-import Block from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block.ts';
 import tpl from './input.hbs?raw';
 
-interface InputProps extends Block {
-    name: string,
-    label?: string,
-    type?: string,
+export interface InputProps extends BaseProps {
+    name: string;
+    label?: string;
+    type?: string;
     events?: {
-        blur?: (event: any) => void;
-        focus?: (event: any) => void;
+        blur?: (event: Event) => void;
+        focus?: (event: Event) => void;
     };
 }
 
@@ -24,14 +24,16 @@ export class Input extends Block {
     const { events = {} } = this._props;
 
     Object.keys(events).forEach((eventName) => {
-      this._element.children[0].children[0].children[0].addEventListener(eventName, events[eventName]); //  Такая реализация, потому что целевой input вложен в обертки
+      //  Такая реализация, потому что целевой input вложен в обертки
+      this._element.children[0].children[0].children[0].addEventListener(eventName, events[eventName]);
     });
   }
 
   setProps(newProps) {
     if (!newProps) return;
 
-    const element = this._element.children[0].children[0].children[0]; //  Такая реализация, потому что целевой input вложен в обертки
+    //  Такая реализация, потому что целевой input вложен в обертки
+    const element = this._element.children[0].children[0].children[0];
     this._setUpdate = false;
     const oldValue = { oldInnerHTMLValue: element.value, oldElement: element, ...this._props };
 
@@ -46,6 +48,6 @@ export class Input extends Block {
   }
 
   render() {
-    return this.compile(tpl, this._props);
+    return this.compile(tpl as string, this._props);
   }
 }

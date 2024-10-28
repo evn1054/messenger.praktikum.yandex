@@ -13,6 +13,6 @@ interface ButtonProps extends BaseProps {
 // export class Button extends Block<Props> {
 export class Button extends Block<ButtonProps> {
   render() {
-    return this.compile(tpl, this._props);
+    return this.compile(tpl as string, this._props);
   }
 }

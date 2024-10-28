@@ -21,6 +21,6 @@ export default class LoginPage extends Block {
   }
 
   render() {
-    return this.compile(tpl, undefined);
+    return this.compile(tpl as string, this._props);
   }
 }

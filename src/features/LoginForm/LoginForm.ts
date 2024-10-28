@@ -2,15 +2,15 @@ import Block from '@core/Block.ts';
 import { Input } from '@components/input';
 import { Button } from '@components/button';
 
-import { validateLogin, validatePassword } from '@features/LoginForm/helpers.ts';
+import { validateLogin, validatePassword } from '@features/LoginForm/helpers';
 import tpl from './LoginForm.hbs?raw';
 
 export const loginField = new Input({
   name: 'login',
   label: 'Логин',
   events: {
-    blur: (event) => {
-      validateLogin(event);
+    blur: () => {
+      validateLogin();
     },
   },
 
@@ -20,8 +20,8 @@ export const passwordField = new Input({
   label: 'Пароль',
   type: 'password',
   events: {
-    blur: (event) => {
-      validatePassword(event);
+    blur: () => {
+      validatePassword();
     },
   },
 });
@@ -45,6 +45,6 @@ export class LoginForm extends Block {
 
   render() {
     console.log('LoginForm Render');
-    return this.compile(tpl, this._props);
+    return this.compile(tpl as string, this._props);
   }
 }

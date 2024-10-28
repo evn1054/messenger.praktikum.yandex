@@ -34,7 +34,7 @@
     "max-len": [
       "error",
       {
-        "code": 100,
+        "code": 150,
         // Максимальная длина строки
         "tabWidth": 2,
         "ignoreUrls": true,

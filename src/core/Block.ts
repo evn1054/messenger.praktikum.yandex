@@ -2,7 +2,13 @@ import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus.js';
 
-export default class Block {
+export interface BaseProps {
+    events?: Partial<Record<string, (event: Event) => void>>;
+
+    [key: string]: unknown;
+}
+
+export default class Block<Props extends BaseProps> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -28,15 +34,13 @@ export default class Block {
 
   _oldInnerHTMLValue;
 
-  // constructor(tagName = 'div', propsAndChildrens: Record<string, unknown> = {}) {
-  // constructor(propsAndChilds = {}, tagName = 'div') {
-  constructor(propsAndChilds = {}, tagName = 'div') {
+  constructor(propsAndChilds: Props, tagName = 'div') {
     const { children, props, lists } = this.getChildren(propsAndChilds);
 
     this._eventBus = new EventBus();
     this._id = makeUUID();
-    // this._children = this.makePropsProxy(children);
-    this._children = children;
+    this._children = this.makePropsProxy(children);
+    // this._children = children;
     this._lists = this.makePropsProxy(lists);
     this._props = this.makePropsProxy({ ...props, __id: this._id });
     this._meta = { tagName, props };
@@ -53,8 +57,7 @@ export default class Block {
   componentDidMount() {
   }
 
-  componentDidUpdate(oldProps, newProps) {
-    console.log('newProps, oldProps >>>>', newProps, oldProps);
+  componentDidUpdate(oldProps: BaseProps, newProps: BaseProps) {
     return true;
   }
 
@@ -65,7 +68,7 @@ export default class Block {
     this._eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  createDocumentElement(tagName) {
+  createDocumentElement(tagName: string) {
     const element = document.createElement(tagName);
     element.setAttribute('data-id', this._id);
     return element;
@@ -106,9 +109,9 @@ export default class Block {
   }
 
   getChildren(propsAndChilds) {
-    const children = {};
-    const props = {};
-    const lists = {};
+    const children: Record<string, typeof Block> = {};
+    const props: BaseProps = {};
+    const lists: Record<string, typeof Block[]> = {};
 
     Object.keys(propsAndChilds).forEach((key) => {
       if (propsAndChilds[key] instanceof Block) children[key] = propsAndChilds[key];
@@ -123,24 +126,28 @@ export default class Block {
     return this._element;
   }
 
-  compile(template, props) {
+  getId() {
+    return this._id;
+  }
+
+  compile(template: string, props: BaseProps) {
     if (typeof props === 'undefined') props = this._props;
 
     const propsAndStubs = { ...props };
 
     Object.entries(this._children).forEach(([key, children]) => {
-      propsAndStubs[key] = `<div data-id="${children._id}"></div>`;
+      propsAndStubs[key] = `<div data-id="${children.getId()}"></div>`;
     });
 
     Object.entries(this._lists).forEach(([key, listItem]) => {
       propsAndStubs[key] = `<div data-id="__1_${key}"></div>`;
     });
 
-    const fragment = this.createDocumentElement('template');
+    const fragment = this.createDocumentElement('template') as HTMLTemplateElement;
     fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
 
     Object.values(this._children).forEach((children) => {
-      const stub = fragment.content.querySelector(`[data-id="${children._id}"]`);
+      const stub = fragment.content.querySelector(`[data-id="${children.getId()}"]`);
       if (stub) stub.replaceWith(children.getContent()); // так было у Коли
       // if (stub) stub.replaceWith(children.getElement());
     });
@@ -152,7 +159,7 @@ export default class Block {
         return;
       }
 
-      const listContent = this.createDocumentElement('template');
+      const listContent = this.createDocumentElement('template') as HTMLTemplateElement;
 
       listItem.forEach((item) => {
         if (item instanceof Block) listContent.content.append(item.getContent());
@@ -183,40 +190,6 @@ export default class Block {
     if (isReRender) this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  // с этим setProps будет происходить много ререндеров
-  // setProps = (newProps) => {
-  //   if (!newProps) {
-  //     return;
-  //   }
-  //
-  //   const { children, props } = this.getChildren(newProps);
-  //
-  //   if (Object.values(children).length) Object.assign(this._children, children);
-  //   if (Object.values(props).length) Object.assign(this._props, props);
-  // };
-  //
-  // makePropsProxy(props) {
-  //   // Можно и так передать this
-  //   // Такой способ больше не применяется с приходом ES6+
-  //
-  //   return new Proxy(props, {
-  //     get(target, prop) {
-  //       const value = target[prop];
-  //       return typeof value === 'function' ? value.bind(target) : value;
-  //     },
-  //     set: (target, prop, value) => {
-  //       const oldValue = { ...target };
-  //       target[prop] = value;
-  //       this._eventBus.emit(Block.EVENTS.FLOW_CDU, oldValue, target);
-  //
-  //       return true;
-  //     },
-  //     // deleteProperty() {
-  //     //   throw new Error('Нет доступа');
-  //     // },
-  //   });
-  // }
-
   show() {
     this.getContent().style.display = 'block';
   }
@@ -229,7 +202,7 @@ export default class Block {
     return this._element;
   }
 
-  setProps(newProps) {
+  setProps(newProps: BaseProps) {
     if (!newProps) return;
 
     this._setUpdate = false;

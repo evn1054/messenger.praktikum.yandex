@@ -1,7 +1,6 @@
-import Block from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block.ts';
 import { Input } from '@components/input';
 import { Button } from '@components/button';
-
 import { validateLogin, validatePassword } from '@features/LoginForm/helpers';
 import tpl from './LoginForm.hbs?raw';
 
@@ -13,8 +12,8 @@ export const loginField = new Input({
       validateLogin();
     },
   },
-
 });
+
 export const passwordField = new Input({
   name: 'password',
   label: 'Пароль',
@@ -26,7 +25,7 @@ export const passwordField = new Input({
   },
 });
 
-export class LoginForm extends Block {
+export class LoginForm extends Block<BaseProps> {
   constructor() {
     super({
       loginInput: loginField,
@@ -34,7 +33,6 @@ export class LoginForm extends Block {
       primaryButton: new Button({
         label: 'Авторизироваться',
         type: 'submit',
-
       }),
       linkButton: new Button({
         label: 'Нет аккаунта?',
@@ -44,7 +42,6 @@ export class LoginForm extends Block {
   }
 
   render() {
-    console.log('LoginForm Render');
     return this.compile(tpl as string, this._props);
   }
 }

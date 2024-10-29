@@ -1,7 +1,12 @@
 import { validateLogin, validatePassword } from '@features/LoginForm/helpers.ts';
 
-export const validate = (value, validators): string[] => {
-  const errorMessages = [];
+interface ValidationResult {
+    isValid: boolean;
+    message: string;
+}
+
+export const validate = (value: string, validators: ((val: string) => ValidationResult)[]): string[] => {
+  const errorMessages: string[] = [];
 
   validators.forEach((validator) => {
     const result = validator(value || '');
@@ -15,23 +20,31 @@ export const validate = (value, validators): string[] => {
 };
 
 // на текущий момент есть реализаци я валидации именно Input потмоу что там специфическая вложенность
-export const validateField = (field, validators, type = 'input') => {
-  if (!field._element) {
+export const validateField = (
+  field: unknown,
+  validators: ((value: string) => ValidationResult)[],
+  type = 'input',
+) => {
+  const inputField = field as { _element: HTMLElement; setProps: (props: Record<string, any>) => void };
+
+  if (!inputField._element) {
     console.error('Input is not found.');
     throw new Error('Input is not found.');
   }
-  const targetField = field._element.children[0].children[0].children[0];
+
+  const targetField = inputField._element.children[0]?.children[0]?.children[0] as HTMLInputElement;
   let errors: string[] = [];
 
   if (type === 'input') {
-    errors = validate(targetField.value, validators);
+    errors = validate(targetField?.value || '', validators);
   }
+
   const props = {
-    help: errors?.[0],
+    help: errors[0] || '',
     status: errors.length ? 'error' : undefined,
   };
 
-  field.setProps(props);
+  inputField.setProps(props);
 
   return errors.length === 0;
 };

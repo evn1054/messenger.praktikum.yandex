@@ -1,13 +1,11 @@
 import './login.scss';
-import Block from '@core/Block.ts';
-
+import Block, { BaseProps } from '@core/Block.ts';
 import { FormWrapper } from '@components/formWrapper';
 import { LoginForm } from '@features/LoginForm';
-
 import { validateForm } from '@features/helpers.ts';
 import tpl from './login.hbs?raw';
 
-export default class LoginPage extends Block {
+export default class LoginPage extends Block<BaseProps> {
   constructor() {
     super({
       formWrapper: new FormWrapper({
@@ -21,6 +19,6 @@ export default class LoginPage extends Block {
   }
 
   render() {
-    return this.compile(tpl as string, this._props);
+    return this.compile(tpl as string, this._props); // Используем `this.props`
   }
 }

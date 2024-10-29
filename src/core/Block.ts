@@ -22,7 +22,7 @@ export default class Block<Props extends BaseProps> {
 
   _id;
 
-  _element;
+  _element: HTMLElement | null = null;
 
   _lists;
 
@@ -32,7 +32,7 @@ export default class Block<Props extends BaseProps> {
 
   _setUpdate = false;
 
-  _oldInnerHTMLValue;
+  _oldInnerHTMLValue: string = '';
 
   constructor(propsAndChilds: Props, tagName = 'div') {
     const { children, props, lists } = this.getChildren(propsAndChilds);
@@ -57,7 +57,7 @@ export default class Block<Props extends BaseProps> {
   componentDidMount() {
   }
 
-  componentDidUpdate(oldProps: BaseProps, newProps: BaseProps) {
+  componentDidUpdate(_oldProps: BaseProps, _newProps: BaseProps) {
     return true;
   }
 
@@ -77,39 +77,73 @@ export default class Block<Props extends BaseProps> {
   _render() {
     const block = this.render();
     this.removeEvents();
-    this._element.innerHTML = '';
-    this._element.appendChild(block);
-    this.addAttribute();
-    this.addEvents();
-    if (this._oldInnerHTMLValue) this._element.children[0].children[0].children[0].value = this._oldInnerHTMLValue; //  Такая реализация, потому что целевой input вложен в обертки
+        this._element!.innerHTML = '';
+        this._element!.appendChild(block);
+        this.addAttribute();
+        this.addEvents();
+        //  Такая реализация, потому что целевой input вложен в обертки
+        if (this._oldInnerHTMLValue) {
+          const targetInput = this._element!.children[0].children[0].children[0] as HTMLInputElement;
+          if (targetInput) targetInput.value = this._oldInnerHTMLValue;
+        }
   }
 
-  render() {
+  render(): DocumentFragment {
+    return new DocumentFragment();
   }
 
+  // addEvents() {
+  //   const { events = {} } = this._props;
+  //   Object.keys(events).forEach((eventName) => {
+  //           this._element!.addEventListener(eventName, events[eventName]);
+  //   });
+  // }
   addEvents() {
     const { events = {} } = this._props;
     Object.keys(events).forEach((eventName) => {
-      this._element.addEventListener(eventName, events[eventName]);
+      const eventHandler = events[eventName as keyof typeof events];
+      if (eventHandler && typeof eventHandler === 'function') {
+                this._element!.addEventListener(eventName, eventHandler as EventListener);
+      }
     });
   }
+
+  // removeEvents() {
+  //   const { events = {} } = this._props;
+  //   Object.keys(events).forEach((eventName) => {
+  //           this._element!.removeEventListener(eventName, events[eventName]);
+  //   });
+  // }
 
   removeEvents() {
     const { events = {} } = this._props;
     Object.keys(events).forEach((eventName) => {
-      this._element.removeEventListener(eventName, events[eventName]);
+      const eventHandler = events[eventName as keyof typeof events];
+      if (eventHandler && typeof eventHandler === 'function') {
+                this._element!.removeEventListener(eventName, eventHandler as EventListener);
+      }
     });
   }
 
+  // addAttribute() {
+  //   const { attr = {} } = this._props;
+  //   Object.entries(attr).forEach(([key, value]) => {
+  //           this._element!.setAttribute(key, value as string);
+  //   });
+  // }
   addAttribute() {
-    const { attr = {} } = this._props;
-    Object.entries(attr).forEach(([key, value]) => {
-      this._element.setAttribute(key, value);
-    });
+    const attr = this._props.attr || {};
+    if (typeof attr === 'object' && !Array.isArray(attr)) {
+      Object.entries(attr).forEach(([key, value]) => {
+        if (typeof value === 'string') {
+                    this._element!.setAttribute(key, value);
+        }
+      });
+    }
   }
 
-  getChildren(propsAndChilds) {
-    const children: Record<string, typeof Block> = {};
+  getChildren(propsAndChilds: Props) {
+    const children: Record<string, Block<BaseProps>> = {};
     const props: BaseProps = {};
     const lists: Record<string, typeof Block[]> = {};
 
@@ -131,15 +165,15 @@ export default class Block<Props extends BaseProps> {
   }
 
   compile(template: string, props: BaseProps) {
-    if (typeof props === 'undefined') props = this._props;
+    if (!props) props = this._props;
 
     const propsAndStubs = { ...props };
 
     Object.entries(this._children).forEach(([key, children]) => {
-      propsAndStubs[key] = `<div data-id="${children.getId()}"></div>`;
+      propsAndStubs[key] = `<div data-id="${(children as Block<BaseProps>).getId()}"></div>`;
     });
 
-    Object.entries(this._lists).forEach(([key, listItem]) => {
+    Object.entries(this._lists).forEach(([key]) => {
       propsAndStubs[key] = `<div data-id="__1_${key}"></div>`;
     });
 
@@ -147,8 +181,8 @@ export default class Block<Props extends BaseProps> {
     fragment.innerHTML = Handlebars.compile(template)(propsAndStubs);
 
     Object.values(this._children).forEach((children) => {
-      const stub = fragment.content.querySelector(`[data-id="${children.getId()}"]`);
-      if (stub) stub.replaceWith(children.getContent()); // так было у Коли
+      const stub = fragment.content.querySelector(`[data-id="${(children as Block<BaseProps>).getId()}"]`);
+      if (stub) stub.replaceWith((children as Block<BaseProps>).getContent() as Node); // так было у Коли
       // if (stub) stub.replaceWith(children.getElement());
     });
 
@@ -161,8 +195,8 @@ export default class Block<Props extends BaseProps> {
 
       const listContent = this.createDocumentElement('template') as HTMLTemplateElement;
 
-      listItem.forEach((item) => {
-        if (item instanceof Block) listContent.content.append(item.getContent());
+      (listItem as Block<BaseProps>[]).forEach((item) => {
+        if (item) listContent.content.append(item.getContent() as Node);
         else listContent.content.append(`${item}`);
       });
 
@@ -174,7 +208,7 @@ export default class Block<Props extends BaseProps> {
 
   _componentDidMount() {
     this.componentDidMount();
-    Object.values(this._children).forEach((children) => {
+    (Object.values(this._children) as Block<BaseProps>[]).forEach((children) => {
       children.dispatchComponentDidMount();
     });
   }
@@ -184,19 +218,19 @@ export default class Block<Props extends BaseProps> {
     if (Object.keys(this._children).length) this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  _componentDidUpdate(oldProps, newProps) {
-    this._oldInnerHTMLValue = oldProps.oldInnerHTMLValue;
+  _componentDidUpdate(oldProps: BaseProps, newProps: BaseProps) {
+    this._oldInnerHTMLValue = oldProps.oldInnerHTMLValue as string;
     const isReRender = this.componentDidUpdate(oldProps, newProps);
     if (isReRender) this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  show() {
-    this.getContent().style.display = 'block';
-  }
-
-  hide() {
-    this.getContent().style.display = 'none';
-  }
+  // show() {
+  //   this.getContent().style.display = 'block';
+  // }
+  //
+  // hide() {
+  //   this.getContent().style.display = 'none';
+  // }
 
   getContent() {
     return this._element;
@@ -207,7 +241,7 @@ export default class Block<Props extends BaseProps> {
 
     this._setUpdate = false;
     const oldValue = { ...this._props };
-    const { props, children } = this.getChildren(newProps);
+    const { props, children } = this.getChildren(newProps as Props);
 
     if (Object.values(children).length) Object.assign(this._children, children);
     if (Object.values(props).length) Object.assign(this._props, props);
@@ -218,14 +252,14 @@ export default class Block<Props extends BaseProps> {
     }
   }
 
-  makePropsProxy(props) {
-    return new Proxy(props, {
-      get(target, props) { // TODO: сотри эту функцию, она не используется нигде
-        const value = target[props];
+  makePropsProxy(props: BaseProps) {
+    return new Proxy<BaseProps>(props, {
+      get(target, prop: string) { // TODO: сотри эту функцию, она не используется нигде
+        const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
 
-      set: (target, prop, value) => {
+      set: (target, prop: string, value) => {
         if (target[prop] !== value) {
           target[prop] = value;
           this._setUpdate = true;
@@ -233,6 +267,7 @@ export default class Block<Props extends BaseProps> {
 
         return true;
       },
+
     });
   }
 }

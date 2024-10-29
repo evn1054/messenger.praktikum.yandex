@@ -19,6 +19,6 @@ export default class LoginPage extends Block<BaseProps> {
   }
 
   render() {
-    return this.compile(tpl as string, this._props); // Используем `this.props`
+    return this.compile(tpl as string, this._props);
   }
 }

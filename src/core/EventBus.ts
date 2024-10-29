@@ -1,4 +1,4 @@
-export type Callback = (...args: unknown[]) => void;
+export type Callback = (...args: any[]) => void;
 
 export default class EventBus {
   _events: Record<string, Callback[]> = {};

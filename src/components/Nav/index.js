@@ -1,13 +1,13 @@
 import Block from '@core/Block.ts';
 import './Nav.scss';
-import { LoginPage } from '@pages';
+import { LoginPage, RegistrationPage } from '@pages';
 
 export const ROUTES = {
   // Home = '/',
   // Profile = '/profile',
   // ChangeInformation = '/change-information',
   // ChangePassword = '/change-password',
-  // Registration = '/registration',
+  registration: '/registration',
   login: '/login',
   // NotFound = '/404',
   // ServerError = '/500',
@@ -19,7 +19,7 @@ export const PAGES = {
   // [ROUTES.Profile]: ProfilePage,
   // [ROUTES.ChangeInformation]: ChangeInformationPage,
   // [ROUTES.ChangePassword]: ChangePasswordPage,
-  // [ROUTES.Registration]: RegistrationPage,
+  [ROUTES.registration]: RegistrationPage,
   [ROUTES.login]: LoginPage,
   // [ROUTES.NotFound]: Error404Page,
   // [ROUTES.ServerError]: Error500Page,
@@ -28,7 +28,7 @@ export const PAGES = {
 const pages = {
   // login: [Pages.LoginPage],
   login: LoginPage,
-  // registration: [Pages.RegistrationPage],
+  registration: RegistrationPage,
   // pageNotFound: [Pages.PageNotFound],
   // serverError: [Pages.ServerError],
   // chatList: [Pages.ChatList],

@@ -1,7 +1,8 @@
 import LoginPage from './login';
+import RegistrationPage from './registration';
 
 export { LoginPage };
-// export { RegistrationPage } from './registration';
+export { RegistrationPage };
 // export { PageNotFound } from './errorPages/pageNotFound';
 // export { ServerError } from './errorPages/serverError';
 // export { ChatList } from './chatList';

@@ -1,5 +1,5 @@
 import Link from '@components/Link';
-import IndexLayout from '@components/layout/Index';
+import IndexLayout from '@components/layout/Index/index';
 import Nav from '@components/Nav/index';
 import { renderDOM } from './utils/render';
 
@@ -22,13 +22,13 @@ const nav = new Nav({
         class: 'link',
       },
     }, 'li'),
-    // new Link('li', {
-    //   url: '/registration',
-    //   title: 'Регистрация',
-    //   attr: {
-    //     class: 'link',
-    //   },
-    // }),
+    new Link({
+      url: '/registration',
+      title: 'Регистрация',
+      attr: {
+        class: 'link',
+      },
+    }, 'li'),
     // new Link('li', {
     //   url: '/pageNotFound',
     //   title: '404',

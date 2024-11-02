@@ -2,18 +2,18 @@ import './registration.scss';
 
 import Block, { BaseProps } from '@core/Block.ts';
 import { FormWrapper } from '@components/formWrapper';
-import { LoginForm } from '@features/LoginForm';
-import { validateForm } from '@features/helpers.ts';
+import { RegistrationForm } from '@features/RegistrationForm';
+import { validateRegistrationForm } from '@features/RegistrationForm/helpers';
 import tpl from './registration.hbs?raw';
 
 export default class RegistrationPage extends Block<BaseProps> {
   constructor() {
     super({
       formWrapper: new FormWrapper({
-        title: 'Вход',
-        children: new LoginForm(),
+        title: 'Регистрация',
+        children: new RegistrationForm(),
         events: {
-          submit: validateForm,
+          submit: validateRegistrationForm,
         },
       }),
     });

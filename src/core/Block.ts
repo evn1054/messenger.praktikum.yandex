@@ -3,7 +3,7 @@ import Handlebars from 'handlebars';
 import EventBus from './EventBus.ts';
 
 export interface BaseProps {
-    events?: Partial<Record<string, (event: Event) => void>>;
+    events?: Partial<Record<string, (event: FocusEvent) => void>>;
 
     [key: string]: unknown;
 }
@@ -31,8 +31,6 @@ export default class Block<Props extends BaseProps> {
   _eventBus;
 
   _setUpdate = false;
-
-  _oldInnerHTMLValue: string = '';
 
   constructor(propsAndChilds: Props, tagName = 'div') {
     const { children, props, lists } = this.getChildren(propsAndChilds);
@@ -81,11 +79,6 @@ export default class Block<Props extends BaseProps> {
         this._element!.appendChild(block);
         this.addAttribute();
         this.addEvents();
-        //  Такая реализация, потому что целевой input вложен в обертки
-        if (this._oldInnerHTMLValue) {
-          const targetInput = this._element!.children[0].children[0].children[0] as HTMLInputElement;
-          if (targetInput) targetInput.value = this._oldInnerHTMLValue;
-        }
   }
 
   render(): DocumentFragment {
@@ -219,7 +212,6 @@ export default class Block<Props extends BaseProps> {
   }
 
   _componentDidUpdate(oldProps: BaseProps, newProps: BaseProps) {
-    this._oldInnerHTMLValue = oldProps.oldInnerHTMLValue as string;
     const isReRender = this.componentDidUpdate(oldProps, newProps);
     if (isReRender) this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }

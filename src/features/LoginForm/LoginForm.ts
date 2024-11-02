@@ -1,28 +1,33 @@
 import Block, { BaseProps } from '@core/Block.ts';
-import { Input } from '@components/input';
 import { Button } from '@components/button';
+import { InputField } from '@components/inputField';
+import { Input } from '@components/input';
 import { validateLogin, validatePassword } from '@features/LoginForm/helpers';
 import tpl from './LoginForm.hbs?raw';
 
-export const loginField = new Input({
-  name: 'login',
+export const loginField = new InputField({
   label: 'Логин',
-  events: {
-    blur: () => {
-      validateLogin();
+  input: new Input({
+    name: 'login',
+    events: {
+      blur: () => {
+        validateLogin();
+      },
     },
-  },
+  }),
 });
 
-export const passwordField = new Input({
-  name: 'password',
+export const passwordField = new InputField({
   label: 'Пароль',
-  type: 'password',
-  events: {
-    blur: () => {
-      validatePassword();
+  input: new Input({
+    name: 'password',
+    type: 'password',
+    events: {
+      blur: () => {
+        validatePassword();
+      },
     },
-  },
+  }),
 });
 
 export class LoginForm extends Block<BaseProps> {

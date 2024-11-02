@@ -1,14 +1,15 @@
-import { validateLogin, validatePassword } from '@features/LoginForm/helpers.ts';
+import * as commonRules from '@features/rules.ts';
+import { InputField } from '@components/inputField';
 
 interface ValidationResult {
     isValid: boolean;
     message: string;
 }
 
-export const validate = (value: string, validators: ((val: string) => ValidationResult)[]): string[] => {
+export const validate = (value: string, commonRulesArr: ((val: string) => ValidationResult)[]): string[] => {
   const errorMessages: string[] = [];
 
-  validators.forEach((validator) => {
+  commonRulesArr.forEach((validator) => {
     const result = validator(value || '');
 
     if (!result.isValid) {
@@ -19,47 +20,55 @@ export const validate = (value: string, validators: ((val: string) => Validation
   return errorMessages;
 };
 
-// на текущий момент есть реализаци я валидации именно Input потмоу что там специфическая вложенность
-export const validateField = (
-  field: unknown,
+export const validateInputField = (
+  field: InputField,
   validators: ((value: string) => ValidationResult)[],
-  type = 'input',
 ) => {
-  const inputField = field as { _element: HTMLElement; setProps: (props: Record<string, any>) => void };
+  const element = field._children.input._element.children[0] as HTMLInputElement | null;
 
-  if (!inputField._element) {
-    console.error('Input is not found.');
+  if (!element) {
     throw new Error('Input is not found.');
   }
 
-  const targetField = inputField._element.children[0]?.children[0]?.children[0] as HTMLInputElement;
-  let errors: string[] = [];
+  const errors = validate(element.value || '', validators);
 
-  if (type === 'input') {
-    errors = validate(targetField?.value || '', validators);
-  }
-
-  const props = {
-    help: errors[0] || '',
+  field.setProps({
+    help: errors?.[0],
     status: errors.length ? 'error' : undefined,
-  };
-
-  inputField.setProps(props);
+  });
 
   return errors.length === 0;
 };
 
-export const validateForm = (e: Event) => {
-  e.preventDefault();
+export const loginRules = [
+  commonRules.required(),
+  commonRules.withLetters(),
+  commonRules.minLength(3),
+  commonRules.maxLength(20),
+  commonRules.latinOnly(),
+  commonRules.withoutSpaces(),
+  commonRules.withoutSpecCharacters(['-', '_']),
+  commonRules.latinOnly(),
+];
 
-  const loginValid = validateLogin();
-  const passwordValid = validatePassword();
+export const passwordRules = [
+  commonRules.required(),
+  commonRules.minLength(8),
+  commonRules.maxLength(40),
+  commonRules.pattern(/^(?=.*[A-ZА-Я])(?=.*\d)/, 'Обязательно хотя бы одна заглавная буква и цифра.'),
+  commonRules.latinOnly(),
+];
 
-  const isValid = loginValid && passwordValid;
+export const emailRules = [commonRules.email()];
 
-  if (isValid) {
-    const formData = new FormData(e.target as HTMLFormElement);
-    const values = Object.fromEntries(formData.entries());
-    console.log('FORM VALUES >>>>>>', values);
-  }
-};
+export const nameRules = [
+  commonRules.withoutSpecCharacters(['-']),
+  commonRules.withoutSpaces(),
+  commonRules.withoutNumbers(),
+];
+
+export const phoneRules = [
+  commonRules.minLength(9),
+  commonRules.maxLength(11),
+  commonRules.phone(),
+];

@@ -1,23 +1,19 @@
+import './input.scss';
 import Block, { BaseProps } from '@core/Block.ts';
 import tpl from './input.hbs?raw';
 
 export interface InputProps extends BaseProps {
     name: string;
-    label?: string;
     type?: string;
     events?: {
-        blur?: (event: Event) => void;
-        focus?: (event: Event) => void;
+        blur?: (event: FocusEvent) => void;
+        focus?: (event: FocusEvent) => void;
     };
 }
 
 export class Input extends Block<BaseProps> {
-  constructor({
-    label, name, type, events,
-  }: InputProps) {
-    super({
-      label, name, type, events,
-    }, 'div');
+  constructor(props: InputProps) {
+    super(props, 'div');
   }
 
   addEvents() {
@@ -25,8 +21,7 @@ export class Input extends Block<BaseProps> {
 
     Object.keys(events).forEach((eventName) => {
       const listener = events[eventName] as EventListener | undefined;
-      const element = this._element!.children[0].children[0].children[0] as HTMLInputElement;
-      //  Такая реализация, потому что целевой input вложен в обертки
+      const element = this._element!.children[0] as HTMLInputElement;
       if (listener) {
         element.addEventListener(eventName, listener);
       }
@@ -36,8 +31,7 @@ export class Input extends Block<BaseProps> {
   setProps(newProps: Partial<InputProps>) {
     if (!newProps) return;
 
-    //  Такая реализация, потому что целевой input вложен в обертки
-    const element = this._element!.children[0].children[0].children[0] as HTMLInputElement;
+    const element = this._element!.children[0] as HTMLInputElement;
     this._setUpdate = false;
     const oldValue = { oldInnerHTMLValue: element.value, oldElement: element, ...this._props };
 

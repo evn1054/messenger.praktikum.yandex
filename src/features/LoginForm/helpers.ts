@@ -1,21 +1,23 @@
-import { validateField } from '@features/helpers.ts';
-import * as commonRules from '@features/rules.ts';
+import {
+  loginRules, passwordRules, validateInputField,
+} from '@features/helpers.ts';
 import { loginField, passwordField } from '@features/LoginForm/LoginForm';
 
-export const validateLogin = () => validateField(loginField, [
-  commonRules.required(),
-  commonRules.minLength(3),
-  commonRules.maxLength(20),
-  commonRules.withLetters(),
-  commonRules.withoutSpaces(),
-  commonRules.withoutSpecCharacters(['-', '_']),
-  commonRules.latinOnly(),
-]);
+export const validateLogin = () => validateInputField(loginField, loginRules);
 
-export const validatePassword = () => validateField(passwordField, [
-  commonRules.required(),
-  commonRules.minLength(8),
-  commonRules.maxLength(40),
-  commonRules.pattern(/^(?=.*[A-ZА-Я])(?=.*\d)/, 'Обязательно хотя бы одна заглавная буква и цифра.'),
-  commonRules.latinOnly(),
-]);
+export const validatePassword = () => validateInputField(passwordField, passwordRules);
+
+export const validateLoginForm = (e: Event) => {
+  e.preventDefault();
+
+  const loginValid = validateLogin();
+  const passwordValid = validatePassword();
+
+  const isValid = loginValid && passwordValid;
+
+  if (isValid) {
+    const formData = new FormData(e.target as HTMLFormElement);
+    const values = Object.fromEntries(formData.entries());
+    console.log('FORM VALUES >>>>>>', values);
+  }
+};

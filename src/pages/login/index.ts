@@ -2,7 +2,7 @@ import './login.scss';
 import Block, { BaseProps } from '@core/Block.ts';
 import { FormWrapper } from '@components/formWrapper';
 import { LoginForm } from '@features/LoginForm';
-import { validateForm } from '@features/helpers.ts';
+import { validateLoginForm } from '@features/LoginForm/helpers';
 import tpl from './login.hbs?raw';
 
 export default class LoginPage extends Block<BaseProps> {
@@ -12,7 +12,7 @@ export default class LoginPage extends Block<BaseProps> {
         title: 'Вход',
         children: new LoginForm(),
         events: {
-          submit: validateForm,
+          submit: validateLoginForm,
         },
       }),
     });

@@ -1,3 +1,3 @@
-import '@components/input/input.scss';
+import '@components/input/input';
 
-export { Input } from '@components/input/input.ts';
+export { Input } from '@components/input/input';

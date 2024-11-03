@@ -7,11 +7,12 @@ import {
   emailField, firstNameField, lastNameField, loginField, passwordAgainField, passwordField, phoneField,
 } from '@features/RegistrationForm/RegistrationForm';
 import * as commonRules from '@features/rules.ts';
+import { Input } from '@components/input';
 
 export const passwordAgainRules = [
   commonRules.callback(
     (value: string) => {
-      const element = passwordField._children.input._element.children[0] as HTMLInputElement;
+      const element = (passwordField._children.input as Input)._element!.children[0] as HTMLInputElement;
       return element?.value === value;
     },
     'Пароли должны совпадать',

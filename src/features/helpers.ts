@@ -1,5 +1,6 @@
 import * as commonRules from '@features/rules.ts';
 import { InputField } from '@components/inputField';
+import { Input } from '@components/input';
 
 interface ValidationResult {
     isValid: boolean;
@@ -24,7 +25,7 @@ export const validateInputField = (
   field: InputField,
   validators: ((value: string) => ValidationResult)[],
 ) => {
-  const element = field._children.input._element.children[0] as HTMLInputElement | null;
+  const element = (field._children.input as Input)._element!.children[0] as HTMLInputElement | null;
 
   if (!element) {
     throw new Error('Input is not found.');

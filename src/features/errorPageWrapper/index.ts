@@ -1,9 +1,20 @@
-import Block from '@core/Block';
-import tpl from './errorPageWrapper.hbs?raw';
+import Block, { BaseProps } from '@core/Block';
+import { Button } from '@components/button';
 import './errorPageWrapper.scss';
+import tpl from './errorPageWrapper.hbs?raw';
 
-export default class ErrorPageWrapper extends Block {
-  constructor(props) {
+export interface ErrorPageWrapperProps {
+    errorNumber?: string;
+    errorDescription?: string;
+    errorPageButton?: Button;
+    attr: {
+        class: string
+    }
+
+}
+
+export default class ErrorPageWrapper extends Block<BaseProps> {
+  constructor(props: ErrorPageWrapperProps) {
     super({
       errorNumber: props.errorNumber,
       errorDescription: props.errorDescription,

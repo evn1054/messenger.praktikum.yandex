@@ -3,7 +3,7 @@ import Block, { BaseProps } from '@core/Block.ts';
 import tpl from './input.hbs?raw';
 
 export interface InputProps extends BaseProps {
-    name: string;
+    name?: string;
     type?: string;
     events?: {
         blur?: (event: FocusEvent) => void;
@@ -20,7 +20,7 @@ export class Input extends Block<InputProps> {
     const { events = {} } = this._props;
 
     Object.keys(events).forEach((eventName) => {
-      const listener = events[eventName] as EventListener | undefined;
+      const listener = events[eventName] as (event: Event) => void | undefined;
       const element = this._element!.children[0] as HTMLInputElement;
       if (listener) {
         element.addEventListener(eventName, listener);

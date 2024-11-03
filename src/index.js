@@ -15,6 +15,7 @@ const nav = new Nav({
     //     class: 'link',
     //   },
     // }),
+
     new Link({
       url: '/login',
       title: 'Вход',
@@ -22,6 +23,7 @@ const nav = new Nav({
         class: 'link',
       },
     }, 'li'),
+
     new Link({
       url: '/registration',
       title: 'Регистрация',
@@ -29,20 +31,23 @@ const nav = new Nav({
         class: 'link',
       },
     }, 'li'),
-    // new Link('li', {
-    //   url: '/pageNotFound',
-    //   title: '404',
-    //   attr: {
-    //     class: 'link',
-    //   },
-    // }),
-    // new Link('li', {
-    //   url: '/serverError',
-    //   title: '500',
-    //   attr: {
-    //     class: 'link',
-    //   },
-    // }),
+
+    new Link({
+      url: '/notFoundPage',
+      title: '404',
+      attr: {
+        class: 'link',
+      },
+    }, 'li'),
+
+    new Link({
+      url: '/serverErrorPage',
+      title: '500',
+      attr: {
+        class: 'link',
+      },
+    }, 'li'),
+
     // new Link('li', {
     //   url: '/chatList',
     //   title: 'Список чатов',

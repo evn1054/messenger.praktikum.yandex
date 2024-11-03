@@ -8,7 +8,7 @@ export interface InputFieldProps extends BaseProps {
     input: Input
 }
 
-export class InputField extends Block<BaseProps> {
+export class InputField extends Block<InputFieldProps> {
   constructor(props: InputFieldProps) {
     super(props);
   }

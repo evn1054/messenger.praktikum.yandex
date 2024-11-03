@@ -1,14 +1,14 @@
 import Block from '@core/Block.ts';
 import ErrorPageWrapper from '@features/errorPageWrapper';
 import { Button } from '@components/button';
-import tpl from './pageNotFound.hbs?raw';
+import tpl from './serverErrorPage.hbs?raw';
 
-export default class NotFoundPage extends Block {
+export default class ServerErrorPage extends Block {
   constructor() {
     super({
       errorPageWrapper: new ErrorPageWrapper({
-        errorNumber: '404',
-        errorDescription: 'Не туда попали',
+        errorNumber: '500',
+        errorDescription: 'Мы уже фиксим',
         errorPageButton: new Button({
           label: 'Назад к чатам',
           type: 'link',

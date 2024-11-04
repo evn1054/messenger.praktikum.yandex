@@ -3,6 +3,7 @@ import './profilePage.scss';
 import { Sidebar } from '@components/sidebar';
 import { ProfileMainInfoList } from '@features/profileMainInfoList';
 import { ProfileAvatar } from '@components/avatar';
+import { ChangeAvatar } from '@components/changeAvatar/changeAvatar';
 import tpl from './profilePage.hbs?raw';
 
 export interface ProfilePageProps extends BaseProps {
@@ -25,11 +26,14 @@ export class ProfilePage extends Block<ProfilePageProps> {
       userName: userNameMock,
       isEdit: isEditMock,
 
-      profileAvatar: new ProfileAvatar({
-        // image: props.profileAvatar.image || 'olo',
-        // name: props.profileAvatar.name || 'lol',
-        image: 'olo',
-        name: userNameMock, // зачем тут это
+      profileAvatar: new ChangeAvatar({
+        avatar: new ProfileAvatar({
+          // image: props.profileAvatar.image || 'olo',
+          // name: props.profileAvatar.name || 'lol',
+          // image: 'olo',
+          name: userNameMock,
+          size: '130px',
+        }),
       }),
 
       profileMainInfoList: new ProfileMainInfoList({

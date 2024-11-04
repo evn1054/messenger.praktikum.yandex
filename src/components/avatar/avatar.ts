@@ -5,7 +5,8 @@ import tpl from './avatar.hbs?raw';
 export interface ProfileAvatarProps extends BaseProps {
     class?: string;
     image?: string;
-    name?: string
+    name?: string;
+    size?: string;
 }
 
 export class ProfileAvatar extends Block<ProfileAvatarProps> {

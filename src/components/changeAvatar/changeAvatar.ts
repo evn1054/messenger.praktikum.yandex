@@ -8,7 +8,7 @@ interface ChangeAvatarProps extends BaseProps {
 }
 
 export class ChangeAvatar extends Block<ChangeAvatarProps> {
-  constructor(props) {
+  constructor(props: ChangeAvatarProps) {
     super({
       ...props,
       attr: {

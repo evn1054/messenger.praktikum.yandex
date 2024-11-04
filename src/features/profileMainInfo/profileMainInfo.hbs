@@ -2,7 +2,7 @@
     <div class="profile-main-info__text-content">
         <div class="profile-main-info__key">
             {{#if isButton}}
-                {{> Button label=key type="profile-link" }}
+                {{{mainInfoButton}}}
             {{else}}
                 {{key}}
             {{/if}}
@@ -13,7 +13,7 @@
                 {{value}}
             {{else}}
                 {{#if isEdit }}
-                    {{> ProfileInput type=type name=name required=required maxlength=maxlength minlength=minlength}}
+                    {{{editableValue}}}
                 {{else}}
                     {{value}}
                 {{/if}}

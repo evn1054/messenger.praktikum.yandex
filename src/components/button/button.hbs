@@ -1,3 +1,7 @@
 <button class="button button__{{type}}">
-    {{label}}
+    {{#if icon}}
+        {{{icon}}}
+    {{else}}
+        {{label}}
+    {{/if}}
 </button>

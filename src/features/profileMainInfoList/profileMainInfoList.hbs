@@ -1,0 +1,12 @@
+{{#if isEdit}}
+    {{#if isPasswordEdit}}
+        {{{passwordForm}}}
+    {{else}}
+        {{{infoForm}}}
+    {{/if}}
+    {{{profileButton}}}
+{{else}}
+    {{{infoForm}}}
+    {{{profileFooterInfo}}}
+{{/if}}
+

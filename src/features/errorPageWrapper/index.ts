@@ -13,7 +13,7 @@ export interface ErrorPageWrapperProps {
 
 }
 
-export default class ErrorPageWrapper extends Block<BaseProps> {
+export class ErrorPageWrapper extends Block<BaseProps> {
   constructor(props: ErrorPageWrapperProps) {
     super({
       errorNumber: props.errorNumber,

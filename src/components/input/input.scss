@@ -17,4 +17,10 @@
   &.input__element__error {
     color: $error-color;
   }
+
+  &__editable {
+    border: none;
+    padding: 0;
+    text-align: right;
+  }
 }

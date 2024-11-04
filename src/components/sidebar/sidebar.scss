@@ -1,0 +1,16 @@
+@import '@styles/variables';
+
+.back {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 65px;
+  max-width: 65px;
+  background: $color-bg-list;
+  border-right: 1px solid $grey1;
+}

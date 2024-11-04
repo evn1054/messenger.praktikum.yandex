@@ -3,6 +3,8 @@
 .profile {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 
   &__wrapper {
     width: $profile-width;
@@ -16,8 +18,10 @@
     padding-top: 60px;
   }
 
-  &__user-name {
+  &__user_name {
     padding-top: 21px;
+    font-weight: 600;
+    font-size: $font-size-008;
   }
 
   &__main-info {
@@ -29,3 +33,5 @@
     padding-top: 40px;
   }
 }
+
+

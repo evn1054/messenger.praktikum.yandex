@@ -1,3 +1,3 @@
 import './profileAvatar.scss';
 
-export { default as ProfileAvatar } from './profileAvatar.hbs?raw';
+// export { ProfileAvatar } from './profileAvatar.hbs?raw';

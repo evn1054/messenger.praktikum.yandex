@@ -5,6 +5,7 @@ import tpl from './input.hbs?raw';
 export interface InputProps extends BaseProps {
     name?: string;
     type?: string;
+    editable?: boolean;
     events?: {
         blur?: (event: FocusEvent) => void;
         focus?: (event: FocusEvent) => void;
@@ -12,10 +13,6 @@ export interface InputProps extends BaseProps {
 }
 
 export class Input extends Block<InputProps> {
-  constructor(props: InputProps) {
-    super(props, 'div');
-  }
-
   addEvents() {
     const { events = {} } = this._props;
 

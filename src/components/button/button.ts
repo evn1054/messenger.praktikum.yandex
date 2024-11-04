@@ -1,13 +1,14 @@
 import Block from '@core/Block.ts';
+import './button.scss';
 import { BaseProps } from '@core/types.ts';
 import tpl from './button.hbs?raw';
 
 interface ButtonProps extends BaseProps {
     label?: string;
-    type?: string;
+    icon?: string;
     events?: {
         click?: (event: Event) => void,
-    }
+    };
 }
 
 export class Button extends Block<ButtonProps> {

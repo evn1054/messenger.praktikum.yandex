@@ -5,7 +5,7 @@ import { LoginForm } from '@features/LoginForm';
 import { validateLoginForm } from '@features/LoginForm/helpers';
 import tpl from './login.hbs?raw';
 
-export default class LoginPage extends Block<BaseProps> {
+export class LoginPage extends Block<BaseProps> {
   constructor() {
     super({
       formWrapper: new FormWrapper({

@@ -6,7 +6,7 @@ import { RegistrationForm } from '@features/RegistrationForm';
 import { validateRegistrationForm } from '@features/RegistrationForm/helpers';
 import tpl from './registration.hbs?raw';
 
-export default class RegistrationPage extends Block<BaseProps> {
+export class RegistrationPage extends Block<BaseProps> {
   constructor() {
     super({
       formWrapper: new FormWrapper({

@@ -1,12 +1,12 @@
 import Block from '@core/Block.ts';
 import './Nav.scss';
 import {
-  LoginPage, NotFoundPage, RegistrationPage, ServerErrorPage,
+  LoginPage, NotFoundPage, ProfilePage, RegistrationPage, ServerErrorPage,
 } from '@pages';
 
 export const ROUTES = {
   // Home = '/',
-  // Profile = '/profile',
+  profile: '/profile',
   // ChangeInformation = '/change-information',
   // ChangePassword = '/change-password',
   registration: '/registration',
@@ -18,7 +18,7 @@ export const ROUTES = {
 
 export const PAGES = {
   // [ROUTES.Home]: HomePage,
-  // [ROUTES.Profile]: ProfilePage,
+  [ROUTES.profile]: ProfilePage,
   // [ROUTES.ChangeInformation]: ChangeInformationPage,
   // [ROUTES.ChangePassword]: ChangePasswordPage,
   [ROUTES.registration]: RegistrationPage,
@@ -35,7 +35,7 @@ const pages = {
   serverErrorPage: ServerErrorPage,
   // chatList: [Pages.ChatList],
   // nav: [Pages.NavigatePage],
-  // profile: [Pages.ProfilePage],
+  profile: ProfilePage,
 };
 
 export function navigate(route) {
@@ -50,7 +50,7 @@ export function navigate(route) {
 
 export default class Nav extends Block {
   render() {
-    return this.compile('{{{items}}}');
+    return this.compile('{{{items}}}', this._props);
   }
 
   addEvents() {

@@ -1,9 +1,9 @@
 import Block, { BaseProps } from '@core/Block.ts';
-import ErrorPageWrapper from '@features/errorPageWrapper';
+import { ErrorPageWrapper } from '@features/errorPageWrapper';
 import { Button } from '@components/button';
 import tpl from './serverErrorPage.hbs?raw';
 
-export default class ServerErrorPage extends Block<BaseProps> {
+export class ServerErrorPage extends Block<BaseProps> {
   constructor() {
     super({
       errorPageWrapper: new ErrorPageWrapper({

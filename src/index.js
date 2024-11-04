@@ -1,9 +1,9 @@
 import Link from '@components/Link';
-import IndexLayout from '@components/layout/Index/index';
 import Nav from '@components/Nav/index';
-import { renderDOM } from './utils/render';
+import { IndexLayout } from '@components/layout/IndexLayout/index';
 
 import './styles/main.scss';
+import { renderDOM } from './utils/render';
 
 const nav = new Nav({
 
@@ -55,12 +55,13 @@ const nav = new Nav({
     //     class: 'link',
     //   },
     // }),
-    // new Link('li', {
-    //   url: '/profile',
-    //   title: 'Профиль',
-    //   attr: {
-    //     class: 'link',
-    //   },
+    new Link({
+      url: '/profile',
+      title: 'Профиль',
+      attr: {
+        class: 'link',
+      },
+    }, 'li'),
     // }),
   ],
 

@@ -1,3 +1,3 @@
 import './chatHeader.scss';
 
-export { default as ChatHeader } from './chatHeader.hbs?raw';
+// export { ChatHeader } from './chatHeader.hbs?raw';

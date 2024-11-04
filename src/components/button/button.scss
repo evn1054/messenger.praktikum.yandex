@@ -17,14 +17,34 @@
   }
 
   &__link,
-  &__profile-link {
-    color: $primary-color;
+  &__profile-link,
+  &__attention {
     font-size: $font-size-003;
     text-align: center;
   }
 
+  &__link,
   &__profile-link {
+    color: $primary-color;
+  }
+
+  &__attention {
+    color: $error-color;
+  }
+
+  &__profile-link, &__attention {
     padding: 0;
+  }
+
+  &__round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $primary-color;
+    border-radius: 50%;
+    border: none;
+    width: 30px;
+    height: 30px;
   }
 
   &-arrow {

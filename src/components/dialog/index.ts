@@ -1,3 +1,3 @@
 import './dialog.scss';
 
-export { default as Dialog } from './dialog.hbs?raw';
+// export { Dialog } from './dialog.hbs?raw';

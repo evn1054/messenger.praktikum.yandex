@@ -9,10 +9,6 @@ export interface InputFieldProps extends BaseProps {
 }
 
 export class InputField extends Block<InputFieldProps> {
-  constructor(props: InputFieldProps) {
-    super(props);
-  }
-
   render() {
     return this.compile(tpl as string, this._props);
   }

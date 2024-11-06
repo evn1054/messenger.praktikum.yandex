@@ -14,8 +14,8 @@ export interface ProfilePageProps extends BaseProps {
 
 export class ProfilePage extends Block<ProfilePageProps> {
   constructor(props: ProfilePageProps) {
-    const isEditMock = false; // временное решение для рвзработки
-    const isPasswordEditMock = true; // временное решение для рвзработки
+    const isEditMock = true; // временное решение для рвзработки
+    const isPasswordEditMock = false; // временное решение для рвзработки
     const userNameMock = 'Gerald'; // временное решение для рвзработки
     super({
       ...props,

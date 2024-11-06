@@ -1,6 +1,7 @@
 import * as commonRules from '@features/rules.ts';
 import { InputField } from '@components/inputField';
 import { Input } from '@components/input';
+import { EditableField } from '@components/editableField';
 
 interface ValidationResult {
     isValid: boolean;
@@ -22,11 +23,15 @@ export const validate = (value: string, commonRulesArr: ((val: string) => Valida
 };
 
 export const validateInputField = (
-  field: InputField,
+  field: InputField | EditableField,
   validators: ((value: string) => ValidationResult)[],
 ) => {
-  const element = (field._children.input as Input)._element!.children[0] as HTMLInputElement | null;
+  const inputChild = field._children.input;
+  if (!(inputChild instanceof Input)) {
+    throw new Error('Input component is not found in children.');
+  }
 
+  const element = inputChild._element?.children[0] as HTMLInputElement | null;
   if (!element) {
     throw new Error('Input is not found.');
   }
@@ -41,6 +46,23 @@ export const validateInputField = (
   return errors.length === 0;
 };
 
+type Validator = () => boolean;
+export const validateForm = (e: Event, fieldValidators: Record<string, Validator>) => {
+  e.preventDefault();
+
+  const validationResults = Object.entries(fieldValidators).map(([fieldName, validator]) => ({
+    field: fieldName,
+    isValid: validator(),
+  }));
+
+  const isValid = validationResults.every((result) => result.isValid);
+
+  if (isValid) {
+    const formData = new FormData(e.target as HTMLFormElement);
+    const values = Object.fromEntries(formData.entries());
+    console.log('FORM VALUES >>>>>>', values);
+  }
+};
 export const loginRules = [
   commonRules.required(),
   commonRules.withLetters(),

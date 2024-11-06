@@ -12,7 +12,7 @@ import {
 import { InputField } from '@components/inputField';
 import tpl from './RegistrationForm.hbs?raw';
 
-export const emailField = new InputField({
+export const registrationEmailField = new InputField({
   label: 'E-mail',
   input: new Input({
     name: 'email',
@@ -23,7 +23,7 @@ export const emailField = new InputField({
     },
   }),
 });
-export const loginField = new InputField({
+export const registrationLoginField = new InputField({
   label: 'Логин',
   input: new Input({
     name: 'login',
@@ -34,7 +34,7 @@ export const loginField = new InputField({
     },
   }),
 });
-export const firstNameField = new InputField({
+export const registrationFirstNameField = new InputField({
   label: 'Имя',
   input: new Input({
     name: 'firstName',
@@ -45,7 +45,7 @@ export const firstNameField = new InputField({
     },
   }),
 });
-export const lastNameField = new InputField({
+export const registrationLastNameField = new InputField({
   label: 'Фамилия',
   input: new Input({
     name: 'lastName',
@@ -56,7 +56,7 @@ export const lastNameField = new InputField({
     },
   }),
 });
-export const phoneField = new InputField({
+export const registrationPhoneField = new InputField({
   label: 'Номер телефона',
   input: new Input({
     name: 'phone',
@@ -68,7 +68,7 @@ export const phoneField = new InputField({
   }),
 });
 
-export const passwordField = new InputField({
+export const registrationPasswordField = new InputField({
   label: 'Пароль',
   input: new Input({
     name: 'password',
@@ -80,7 +80,7 @@ export const passwordField = new InputField({
     },
   }),
 });
-export const passwordAgainField = new InputField({
+export const registrationPasswordAgainField = new InputField({
   label: 'Пароль (ещё раз)',
   input: new Input({
     name: 'passwordAgain',
@@ -96,13 +96,13 @@ export const passwordAgainField = new InputField({
 export class RegistrationForm extends Block<BaseProps> {
   constructor() {
     super({
-      emailInput: emailField,
-      loginInput: loginField,
-      firstNameInput: firstNameField,
-      lastNameInput: lastNameField,
-      phoneInput: phoneField,
-      passwordInput: passwordField,
-      passwordAgainInput: passwordAgainField,
+      emailInput: registrationEmailField,
+      loginInput: registrationLoginField,
+      firstNameInput: registrationFirstNameField,
+      lastNameInput: registrationLastNameField,
+      phoneInput: registrationPhoneField,
+      passwordInput: registrationPasswordField,
+      passwordAgainInput: registrationPasswordAgainField,
       primaryButton: new Button({
         label: 'Авторизироваться',
         type: 'submit',

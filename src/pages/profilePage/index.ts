@@ -1,9 +1,9 @@
 import Block, { BaseProps } from '@core/Block.ts';
 import './profilePage.scss';
-import { Sidebar } from '@components/sidebar';
-import { ProfileMainInfoList } from '@features/profileMainInfoList';
 import { ProfileAvatar } from '@components/avatar';
 import { ChangeAvatar } from '@components/changeAvatar/changeAvatar';
+import { Sidebar } from '@features/sidebar';
+import { ProfileFieldList } from '@features/profileMainInfoList/profileMainInfoList';
 import tpl from './profilePage.hbs?raw';
 
 export interface ProfilePageProps extends BaseProps {
@@ -15,7 +15,7 @@ export interface ProfilePageProps extends BaseProps {
 export class ProfilePage extends Block<ProfilePageProps> {
   constructor(props: ProfilePageProps) {
     const isEditMock = false; // временное решение для рвзработки
-    const isPasswordEditMock = false; // временное решение для рвзработки
+    const isPasswordEditMock = true; // временное решение для рвзработки
     const userNameMock = 'Gerald'; // временное решение для рвзработки
     super({
       ...props,
@@ -28,15 +28,12 @@ export class ProfilePage extends Block<ProfilePageProps> {
 
       profileAvatar: new ChangeAvatar({
         avatar: new ProfileAvatar({
-          // image: props.profileAvatar.image || 'olo',
-          // name: props.profileAvatar.name || 'lol',
-          // image: 'olo',
           name: userNameMock,
           size: '130px',
         }),
       }),
 
-      profileMainInfoList: new ProfileMainInfoList({
+      ProfileFieldList: new ProfileFieldList({
         attr: {
           class: 'profile__main-info',
         },

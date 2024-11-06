@@ -2,7 +2,7 @@ import Block, { BaseProps } from '@core/Block.ts';
 import { Button } from '@components/button';
 import { InputField } from '@components/inputField';
 import { Input } from '@components/input';
-import { validateLogin, validatePassword } from '@features/LoginForm/helpers';
+import { validateLogin, validatePassword } from '@features/loginForm/helpers';
 import tpl from './LoginForm.hbs?raw';
 
 export const loginField = new InputField({

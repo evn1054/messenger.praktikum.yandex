@@ -12,8 +12,8 @@
 // export { Message } from './message';
 // export { ProfileAvatar } from './profileAvatar';
 // export { UserName } from './userName';
-// export { ProfileMainInfo } from './profileMainInfo';
-// export { ProfileMainInfoList } from './profileMainInfoList';
+// export { ProfileField } from './ProfileField';
+// export { ProfileFieldList } from './ProfileFieldList';
 // export { IconButton } from './iconButton';
 // export { ProfileFooterInfo } from './profileFooterInfo';
 // export { ProfileInput } from './profileInput';

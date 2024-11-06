@@ -1,8 +1,9 @@
 import './login.scss';
 import Block, { BaseProps } from '@core/Block.ts';
 import { FormWrapper } from '@components/formWrapper';
-import { LoginForm } from '@features/LoginForm';
-import { validateLoginForm } from '@features/LoginForm/helpers';
+import { validateForm } from '@features/helpers';
+import { validateLogin, validatePassword } from '@features/loginForm/helpers';
+import { LoginForm } from '@features/loginForm';
 import tpl from './login.hbs?raw';
 
 export class LoginPage extends Block<BaseProps> {
@@ -12,7 +13,10 @@ export class LoginPage extends Block<BaseProps> {
         title: 'Вход',
         children: new LoginForm(),
         events: {
-          submit: validateLoginForm,
+          submit: (event) => validateForm(event, {
+            login: validateLogin,
+            password: validatePassword,
+          }),
         },
       }),
     });

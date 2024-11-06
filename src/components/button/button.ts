@@ -6,6 +6,7 @@ import tpl from './button.hbs?raw';
 interface ButtonProps extends BaseProps {
     label?: string;
     icon?: string;
+    type?: string
     events?: {
         click?: (event: Event) => void,
     };

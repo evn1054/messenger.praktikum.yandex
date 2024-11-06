@@ -1,1 +1,1 @@
-export { ProfileMainInfoList } from './profileMainInfoList.ts';
+export { ProfileFieldList } from './profileMainInfoList';

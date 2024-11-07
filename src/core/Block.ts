@@ -162,6 +162,7 @@ export default class Block<Props extends BaseProps> {
   }
 
   compile(template: string, props: BaseProps) {
+    // eslint-disable-next-line no-param-reassign
     if (!props) props = this._props;
 
     const propsAndStubs = { ...props };
@@ -170,6 +171,7 @@ export default class Block<Props extends BaseProps> {
       propsAndStubs[key] = `<div data-id="${(children as Block<BaseProps>).getId()}"></div>`;
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
     Object.entries(this._lists).forEach(([key, _]) => {
       propsAndStubs[key] = `<div data-id="__1_${key}"></div>`;
     });
@@ -257,6 +259,7 @@ export default class Block<Props extends BaseProps> {
 
       set: (target, prop: string, value) => {
         if (target[prop] !== value) {
+          // eslint-disable-next-line no-param-reassign
           target[prop] = value;
           this._setUpdate = true;
         }

@@ -52,9 +52,11 @@ export default class Block<Props extends BaseProps> {
     this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   componentDidMount() {
   }
 
+  // eslint-disable-next-line class-methods-use-this,@typescript-eslint/no-unused-vars,no-unused-vars
   componentDidUpdate(_oldProps: BaseProps, _newProps: BaseProps) {
     return true;
   }
@@ -81,6 +83,7 @@ export default class Block<Props extends BaseProps> {
         this.addEvents();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   render(): DocumentFragment {
     return new DocumentFragment();
   }
@@ -96,6 +99,7 @@ export default class Block<Props extends BaseProps> {
     Object.keys(events).forEach((eventName) => {
       const eventHandler = events[eventName as keyof typeof events];
       if (eventHandler && typeof eventHandler === 'function') {
+                // eslint-disable-next-line no-undef
                 this._element!.addEventListener(eventName, eventHandler as EventListener);
       }
     });
@@ -113,6 +117,7 @@ export default class Block<Props extends BaseProps> {
     Object.keys(events).forEach((eventName) => {
       const eventHandler = events[eventName as keyof typeof events];
       if (eventHandler && typeof eventHandler === 'function') {
+                // eslint-disable-next-line no-undef
                 this._element!.removeEventListener(eventName, eventHandler as EventListener);
       }
     });
@@ -125,16 +130,15 @@ export default class Block<Props extends BaseProps> {
   //   });
   // }
   addAttribute() {
-    const attr = this._props.attr || {};
+    const attr = this._props.attr as Record<string, string> || {};
     if (typeof attr === 'object' && !Array.isArray(attr)) {
       Object.entries(attr).forEach(([key, value]) => {
-        if (typeof value === 'string') {
-                    this._element!.setAttribute(key, value);
-        }
+                this._element!.setAttribute(key, value);
       });
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getChildren(propsAndChilds: Props) {
     const children: Record<string, Block<BaseProps>> = {};
     const props: BaseProps = {};
@@ -166,7 +170,7 @@ export default class Block<Props extends BaseProps> {
       propsAndStubs[key] = `<div data-id="${(children as Block<BaseProps>).getId()}"></div>`;
     });
 
-    Object.entries(this._lists).forEach(([key]) => {
+    Object.entries(this._lists).forEach(([key, _]) => {
       propsAndStubs[key] = `<div data-id="__1_${key}"></div>`;
     });
 

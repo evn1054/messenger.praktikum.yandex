@@ -61,6 +61,7 @@ export const validateForm = (e: Event, fieldValidators: Record<string, Validator
   if (isValid) {
     const formData = new FormData(e.target as HTMLFormElement);
     const values = Object.fromEntries(formData.entries());
+    // eslint-disable-next-line no-console
     console.log('FORM VALUES >>>>>>', values);
   }
 };

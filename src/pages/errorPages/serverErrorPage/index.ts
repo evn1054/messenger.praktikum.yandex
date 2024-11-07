@@ -1,4 +1,4 @@
-import Block, { BaseProps } from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block';
 import { ErrorPageWrapper } from '@features/errorPageWrapper';
 import { Button } from '@components/button';
 import tpl from './serverErrorPage.hbs?raw';

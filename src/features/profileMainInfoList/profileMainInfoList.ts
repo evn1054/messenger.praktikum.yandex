@@ -1,4 +1,4 @@
-import Block, { BaseProps } from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block';
 import './profileMainInfoList.scss';
 import { InfoForm } from '@features/infoForm';
 import { PasswordForm } from '@features/passwordForm';

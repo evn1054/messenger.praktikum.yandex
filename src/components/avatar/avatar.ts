@@ -1,15 +1,17 @@
-import Block, { BaseProps } from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block';
 import './avatar.scss';
 import tpl from './avatar.hbs?raw';
 
-export interface ProfileAvatarProps extends BaseProps {
+export interface AvatarProps extends BaseProps {
     class?: string;
     image?: string;
     name?: string;
     size?: string;
+    svgWidth?: string;
+    svgHeight?: string;
 }
 
-export class ProfileAvatar extends Block<ProfileAvatarProps> {
+export class Avatar extends Block<AvatarProps> {
   render() {
     return this.compile(tpl as string, this._props);
   }

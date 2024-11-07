@@ -1,0 +1,11 @@
+.main {
+  &__date {
+    margin: 0 auto;
+  }
+
+  &__messages {
+    padding: 0 20px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+}

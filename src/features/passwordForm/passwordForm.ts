@@ -1,13 +1,13 @@
-import Block, { BaseProps } from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block';
 import { ProfileField } from '@features/profileField';
-import { EditableField } from '@components/editableField';
 import {
   validateProfileNewPassword,
   validateProfileNewPasswordAgain,
   validateProfileOldPassword,
 } from '@features/passwordForm/helpers';
 import { Button } from '@components/button';
-import { validateForm } from '@features/helpers.ts';
+import { validateForm } from '@features/helpers';
+import { EditableField } from '@features/editableField';
 import tpl from './passwordForm.hbs?raw';
 
 export interface PasswordFormProps extends BaseProps {

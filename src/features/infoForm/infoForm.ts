@@ -1,7 +1,6 @@
-import Block, { BaseProps } from '@core/Block.ts';
-import { EditableField } from '@components/editableField';
+import Block, { BaseProps } from '@core/Block';
 import { Button } from '@components/button';
-import { validateForm } from '@features/helpers.ts';
+import { validateForm } from '@features/helpers';
 import { ProfileField } from '@features/profileField';
 import {
   validateProfileChatName,
@@ -9,6 +8,7 @@ import {
   validateProfileLastName, validateProfileLogin,
   validateProfilePhone,
 } from '@features/infoForm/helpers';
+import { EditableField } from '@features/editableField';
 import tpl from './infoForm.hbs?raw';
 
 export interface InfoFormProps extends BaseProps {

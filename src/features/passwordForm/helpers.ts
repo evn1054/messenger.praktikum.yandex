@@ -3,14 +3,14 @@ import {
   profileNewPasswordField,
   profileOldPasswordField,
 } from '@features/passwordForm/passwordForm';
-import { passwordRules, validateInputField } from '@features/helpers.ts';
-import * as commonRules from '@features/rules.ts';
+import { passwordRules, validateInputField } from '@features/helpers';
+import * as commonRules from '@features/rules';
 import { Input } from '@components/input';
 
 export const passwordAgainRules = [
   commonRules.callback(
     (value: string) => {
-      const element = (profileNewPasswordField._children.input as Input)._element!.children[0] as HTMLInputElement;
+      const element = (profileNewPasswordField._children.input as Input).getElement()?.children[0] as HTMLInputElement;
       return element?.value === value;
     },
     'Пароли должны совпадать',

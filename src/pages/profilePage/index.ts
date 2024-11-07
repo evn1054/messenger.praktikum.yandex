@@ -1,7 +1,7 @@
-import Block, { BaseProps } from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block';
 import './profilePage.scss';
-import { ProfileAvatar } from '@components/avatar';
-import { ChangeAvatar } from '@components/changeAvatar/changeAvatar';
+import { Avatar } from '@components/avatar';
+import { ChangeAvatar } from '@features/changeAvatar/changeAvatar';
 import { Sidebar } from '@features/sidebar';
 import { ProfileFieldList } from '@features/profileMainInfoList/profileMainInfoList';
 import tpl from './profilePage.hbs?raw';
@@ -9,7 +9,7 @@ import tpl from './profilePage.hbs?raw';
 export interface ProfilePageProps extends BaseProps {
     label?: string;
     isEdit?: boolean;
-    profileAvatar?: ProfileAvatar;
+    avatar?: Avatar;
 }
 
 export class ProfilePage extends Block<ProfilePageProps> {
@@ -26,10 +26,12 @@ export class ProfilePage extends Block<ProfilePageProps> {
       userName: userNameMock,
       isEdit: isEditMock,
 
-      profileAvatar: new ChangeAvatar({
-        avatar: new ProfileAvatar({
+      avatar: new ChangeAvatar({
+        avatar: new Avatar({
           name: userNameMock,
           size: '130px',
+          svgWidth: '40px',
+          svgHeight: '40px',
         }),
       }),
 

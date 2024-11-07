@@ -1,5 +1,5 @@
 import './input.scss';
-import Block, { BaseProps } from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block';
 import tpl from './input.hbs?raw';
 
 export interface InputProps extends BaseProps {

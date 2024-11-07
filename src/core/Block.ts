@@ -1,6 +1,6 @@
 import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
-import EventBus from './EventBus.ts';
+import EventBus from './EventBus';
 
 export interface BaseProps {
     events?: Partial<Record<string, (event: FocusEvent) => void>>;
@@ -22,7 +22,7 @@ export default class Block<Props extends BaseProps> {
 
   _id;
 
-  _element: HTMLElement | null = null;
+  protected _element: HTMLElement | null = null;
 
   _lists;
 

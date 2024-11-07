@@ -1,5 +1,5 @@
 import './login.scss';
-import Block, { BaseProps } from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block';
 import { FormWrapper } from '@components/formWrapper';
 import { validateForm } from '@features/helpers';
 import { validateLogin, validatePassword } from '@features/loginForm/helpers';

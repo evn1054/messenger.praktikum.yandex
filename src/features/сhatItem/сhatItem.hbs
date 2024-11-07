@@ -1,0 +1,18 @@
+<li class="chat__container">
+    <div class="chat__container-hover"></div>
+    <div class="chat__item">
+        {{{avatar}}}
+    </div>
+    <div class="chat__item chat__content">
+        <div class="chat__item-row">
+            <label for="" class="chat__name">{{{chatName}}}</label>
+            <div class="chat__date">{{{chatDate}}}</div>
+        </div>
+        <label for="" class="chat__description">{{{chatDescription}}}</label>
+    </div>
+    {{#if chatNotification}}
+        <div class="chat__notification-circle">
+            <div class="chat__notification">{{{chatNotification}}}</div>
+        </div>
+    {{/if}}
+</li>

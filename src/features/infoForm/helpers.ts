@@ -1,6 +1,6 @@
 import {
   emailRules, loginRules, nameRules, phoneRules, validateInputField,
-} from '@features/helpers.ts';
+} from '@features/helpers';
 import {
   profileChatNameField,
   profileEmailField,

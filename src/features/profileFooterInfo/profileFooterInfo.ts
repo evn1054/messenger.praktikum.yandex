@@ -1,4 +1,4 @@
-import Block from '@core/Block.ts';
+import Block from '@core/Block';
 import './profileFooterInfo.scss';
 import { ProfileField } from '@features/profileField';
 import { ProfileFieldListProps } from '@features/profileMainInfoList/profileMainInfoList';

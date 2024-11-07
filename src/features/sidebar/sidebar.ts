@@ -1,4 +1,4 @@
-import Block, { BaseProps } from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block';
 import { Button } from '@components/button';
 import './sidebar.scss';
 import tpl from './sidebar.hbs?raw';

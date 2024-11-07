@@ -1,1 +1,1 @@
-export { InfoForm } from './infoForm.ts';
+export { InfoForm } from './infoForm';

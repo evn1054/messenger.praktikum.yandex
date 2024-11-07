@@ -1,6 +1,5 @@
-import Block from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block';
 import './button.scss';
-import { BaseProps } from '@core/types.ts';
 import tpl from './button.hbs?raw';
 
 interface ButtonProps extends BaseProps {

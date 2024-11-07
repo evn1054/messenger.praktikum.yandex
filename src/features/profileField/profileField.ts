@@ -1,7 +1,7 @@
-import Block, { BaseProps } from '@core/Block.ts';
+import Block, { BaseProps } from '@core/Block';
 import './profileField.scss';
 import { Button } from '@components/button';
-import { EditableField } from '@components/editableField';
+import { EditableField } from 'src/features/editableField';
 import tpl from './profileField.hbs?raw';
 
 export interface ProfileFieldProps extends BaseProps {

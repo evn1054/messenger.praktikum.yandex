@@ -1,0 +1,15 @@
+.main {
+  height: 100%;
+
+  &__date {
+    margin: 0 auto;
+  }
+
+  &__messages {
+    height: 100%;
+    padding: 0 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+}

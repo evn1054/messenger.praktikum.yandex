@@ -25,7 +25,7 @@ export class RegistrationPage extends Block<BaseProps> {
               passwordAgain: validatePasswordAgain,
               email: validateEmail,
               firstName: validateFirstName,
-              lastName: validateLastName,
+              secondName: validateLastName,
               phone: validatePhone,
             });
           },

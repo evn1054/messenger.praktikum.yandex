@@ -37,7 +37,7 @@ export const registrationLoginField = new InputField({
 export const registrationFirstNameField = new InputField({
   label: 'Имя',
   input: new Input({
-    name: 'firstName',
+    name: 'first_name',
     events: {
       blur: () => {
         validateFirstName();
@@ -48,7 +48,7 @@ export const registrationFirstNameField = new InputField({
 export const registrationLastNameField = new InputField({
   label: 'Фамилия',
   input: new Input({
-    name: 'lastName',
+    name: 'second_Name',
     events: {
       blur: () => {
         validateLastName();

@@ -16,7 +16,7 @@ export interface InfoFormProps extends BaseProps {
     mail?: ProfileField;
     login?: ProfileField;
     firstName?: ProfileField;
-    lastName?: ProfileField;
+    secondName?: ProfileField;
     chatName?: ProfileField;
     phone?: ProfileField;
     isEdit?: boolean;
@@ -45,7 +45,7 @@ export const profileLoginField = new EditableField({
   },
 });
 export const profileFirstNameField = new EditableField({
-  name: 'firstName',
+  name: 'first_name',
   events: {
     blur: () => {
       validateProfileFirstName();
@@ -53,7 +53,7 @@ export const profileFirstNameField = new EditableField({
   },
 });
 export const profileLastNameField = new EditableField({
-  name: 'lastName',
+  name: 'second_Name',
   events: {
     blur: () => {
       validateProfileLastName();
@@ -98,7 +98,7 @@ export class InfoForm extends Block<InfoFormProps> {
         isEdit: props.isEdit,
         editableInput: profileFirstNameField,
       }),
-      lastName: new ProfileField({
+      secondName: new ProfileField({
         fieldTitle: 'Фамилия',
         value: 'mock value', // TODO: в будущем будет приходить объект с информаций по этому полю
         isEdit: props.isEdit,
@@ -123,7 +123,7 @@ export class InfoForm extends Block<InfoFormProps> {
             email: validateProfileEmail,
             login: validateProfileLogin,
             firstName: validateProfileFirstName,
-            lastName: validateProfileLastName,
+            secondName: validateProfileLastName,
             chatName: validateProfileChatName,
             phone: validateProfilePhone,
           });

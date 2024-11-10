@@ -1,0 +1,47 @@
+@import '@styles/variables';
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100%;
+  padding: 11px 20px;
+  border-top: 1px solid $grey1;
+
+  &__attach_btn {
+    background: none;
+    border-radius: $rounding-006;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  &__send_btn {
+    background: $primary-color;
+    width: 28px;
+    height: 28px;
+    border-radius: $rounding-001;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__label {
+    width: 100%;
+    padding-right: 20px;
+  }
+
+  &__input {
+    background: $grey2;
+    border-radius: $rounding-005;
+    border: 0;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: $font-size-004;
+    color: $text-secondary-color;
+    width: 100%;
+  }
+}

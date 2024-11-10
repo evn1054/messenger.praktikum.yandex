@@ -1,15 +1,7 @@
-<div class="input">
-    <label class="input__container">
-        <input
-                class="input__element"
-                placeholder=""
-                type={{type}}
-                minlength={{minlength}}
-                maxlength={{maxlength}}
-                required={{required}}
-                name={{name}}
-        />
-        <span class="input__label">{{label}}</span>
-    </label>
-    <p class="input__helper-text"></p>
-</div>
+<input
+        class="input__element {{#if editable}}input__element__editable{{/if}}"
+        placeholder=""
+        name="{{{name}}}"
+        type="{{{type}}}"
+/>
+

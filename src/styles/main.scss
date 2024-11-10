@@ -1,10 +1,19 @@
-@import "/src/vendor/normalize.css";
-@import "/src/vendor/fonts";
+@import 'src/vendor/normalize.scss';
+@import 'src/vendor/fonts';
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
+}
+
+.app {
+  height: 100vh;
+}
+
+.page {
+  margin-top: auto;
+  height: 100%;
 }

@@ -1,0 +1,84 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "eol-last": [
+      "error",
+      "always"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 150,
+        // Максимальная длина строки
+        "tabWidth": 2,
+        "ignoreUrls": true,
+        // Не проверять длину строк в URL
+        "ignoreStrings": true,
+        // Не проверять длину строк в строках
+        "ignoreTemplateLiterals": true,
+        // Не проверять длину строк в шаблонных литералах
+        "ignoreComments": false
+        // Не проверять длину строк в комментариях
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": 2,
+    "import/no-extraneous-dependencies": [
+      "warn",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ],
+    "import/extensions": [
+      "warn",
+      "never",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "consistent-return": "off",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "warn"
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "build/"
+  ]
+}

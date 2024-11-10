@@ -1,36 +1,57 @@
-@import "src/styles/variables";
+@import '@styles/variables';
 
 .button {
   background-color: initial;
-  border: none;
+  border: 0;
   font-weight: 500;
   display: block;
   width: 100%;
   padding: 12px 0;
-  border-radius: $rounding_002;
+  border-radius: $rounding-002;
   cursor: pointer;
 
-  &__primary {
+  &__primary, &__submit {
     background-color: $primary-color;
     color: $light-color;
-    font-size: $font-size_005;
+    font-size: $font-size-005;
   }
 
-  &__link, &__profile-link {
-    color: $primary-color;
-    font-size: $font-size_003;
+  &__link,
+  &__profile-link,
+  &__attention {
+    font-size: $font-size-003;
     text-align: center;
   }
 
+  &__link,
   &__profile-link {
+    color: $primary-color;
+  }
+
+  &__attention {
+    color: $error-color;
+  }
+
+  &__profile-link, &__attention {
     padding: 0;
+  }
+
+  &__round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $primary-color;
+    border-radius: 50%;
+    border: none;
+    width: 30px;
+    height: 30px;
   }
 
   &-arrow {
     background-color: $primary-color;
     height: 28px;
     width: 28px;
-    border-radius: $rounding_001;
+    border-radius: $rounding-001;
 
     &__left,
     &__right {
@@ -42,7 +63,7 @@
 
       &::after,
       &::before {
-        content: "";
+        content: '';
         background-color: $light-color;
         display: inline-block;
         width: 7px;

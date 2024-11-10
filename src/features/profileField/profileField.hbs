@@ -1,0 +1,27 @@
+<div class="profile-main-info">
+    <div class="profile-main-info__text-content">
+        <div class="profile-main-info__key">
+            {{#if isButton}}
+                {{{mainInfoButton}}}
+            {{else}}
+                {{fieldTitle}}
+            {{/if}}
+        </div>
+
+        <div class="profile-main-info__value">
+            {{#if isButton }}
+                {{value}}
+            {{else}}
+                {{#if isEdit }}
+                    {{{editableInput}}}
+                {{else}}
+                    {{value}}
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>
+
+    {{#unless isLast}}
+        <div class="profile-main-info__br"></div>
+    {{/unless}}
+</div>

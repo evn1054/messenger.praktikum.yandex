@@ -1,0 +1,16 @@
+{{{ sidebar }}}
+<main class="profile__wrapper">
+    <div class="profile__avatar">
+        {{{avatar}}}
+    </div>
+    {{#unless isEdit }}
+        <div class="profile__user_name">{{userName}}</div>
+    {{/unless}}
+
+
+    {{{ProfileFieldList}}}
+
+    {{#unless isEdit}}
+        {{{profileFooterInfo}}}
+    {{/unless}}
+</main>

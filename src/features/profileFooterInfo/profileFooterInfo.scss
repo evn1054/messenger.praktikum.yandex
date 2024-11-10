@@ -1,0 +1,11 @@
+@import '@styles/variables';
+
+.profile {
+  &__footer {
+    padding-top: 60px;
+
+    &__exit > a {
+      color: $error-color !important;
+    }
+  }
+}

@@ -1,21 +1,23 @@
-@import "src/styles/variables";
+@import '@styles/variables';
 
 .form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    padding: 50px 30px 30px;
+    width: 340px;
+    box-shadow: 0 0 6px 0 $shadow;
+    border-radius: $rounding-003;
+  }
 
-    &__form {
-        display: flex;
-        flex-direction: column;
-        padding: 50px 30px 30px;
-        width: 340px;
-        box-shadow: 0 0 6px 0 $shadow;
-        border-radius: $rounding_003;
-    }
-
-    &__title {
-        font-size: $font-size_009;
-        color: $dark-color;
-        margin: auto;
-    }
+  &__title {
+    font-size: $font-size-009;
+    color: $dark-color;
+    margin: auto;
+  }
 }

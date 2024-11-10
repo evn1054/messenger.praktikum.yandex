@@ -1,0 +1,37 @@
+@import '@styles/variables';
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &__wrapper {
+    width: $profile-width;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__avatar {
+    padding-top: 60px;
+  }
+
+  &__user_name {
+    padding-top: 21px;
+    font-weight: 600;
+    font-size: $font-size-008;
+  }
+
+  &__main-info {
+    padding-top: 60px;
+  }
+
+  &__button {
+    width: 280px;
+    padding-top: 40px;
+  }
+}
+
+

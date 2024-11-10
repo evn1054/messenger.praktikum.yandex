@@ -1,0 +1,47 @@
+@import '@styles/variables';
+
+.search__chat {
+  font-family: inherit;
+
+  &-label {
+    position: relative;
+    display: block;
+  }
+
+  &-input {
+    padding: 9px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border-color: transparent;
+    border-width: 1px;
+    border-radius: $rounding-007;
+    font-weight: 500;
+    font-size: $font-size-004;
+    line-height: $font-size-004;
+    color: $dark-color;
+    background-color: $grey2;
+    transition: 0.3s border-color;
+
+    &:hover,
+    &:focus {
+      border-color: $text-secondary-color;
+    }
+
+    &::placeholder {
+      font-size: $font-size-004;
+      font-weight: 500;
+      line-height: $font-size-004;
+      color: $text-secondary-color;
+      text-align: center;
+    }
+  }
+
+  &-icon {
+    top: 50%;
+    left: 38%;
+    position: absolute;
+    cursor: text;
+    transform: translateY(-50%);
+  }
+}

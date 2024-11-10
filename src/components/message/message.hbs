@@ -1,23 +1,26 @@
-<li class="message {{#unless this.owner}}message_is-not-owner{{/unless}} {{#if this.srcImg}}message_is-img{{/if}}">
-    {{#if this.text}}
-        <p class="message__text {{#if this.owner}}message__text_owner{{/if}}">
-            {{this.text}}
-            {{#unless this.owner}}
-                <time class="message__time">{{getHours this.date}}</time>
+<li class="message {{#unless owner}}message_is-not-owner{{/unless}} {{#if srcImg}}message_is-img{{/if}}">
+    {{#if text}}
+        <p class="message__text {{#if owner}}message__text_owner{{/if}}">
+            {{{text}}}
+            {{#unless owner}}
+                <time class="message__time">{{{date}}}</time>
             {{/unless}}
-            {{#if this.owner}}
-                <time class="message__time {{#unless this.isRead}}message__time_is-not-read{{/unless}}{{#if this.isRead}}message__time_is-read{{/if}}">{{getHours this.date}}</time>
+            {{#if owner}}
+                <time class="message__time {{#unless isRead}}message__time_is-not-read{{/unless}}{{#if
+                        isRead}}message__time_is-read{{/if}}">{{{date}}}</time>
             {{/if}}
         </p>
     {{/if}}
-    {{#if this.srcImg}}
-        <img class="message__img" src={{this.srcImg}} alt="Пользовательское изображение" />
-        {{#unless this.owner}}
-            <time class="message__time message__time_is-img">{{getHours this.date}}</time>
+    {{#if srcImg}}
+        <img class="message__img" src={{srcImg}} alt="Пользовательское изображение"/>
+        {{#unless owner}}
+            <time class="message__time message__time_is-img">{{{date}}}</time>
         {{/unless}}
-        {{#if this.owner}}
+        {{#if owner}}
             <div class="message__time_wrapper">
-                <time class="message__time message__time_is-img  {{#unless this.isRead}}message__time_is-not-read{{/unless}}{{#if this.isRead}}message__time_is-read{{/if}}">{{getHours this.date}}</time>
+                <time class="message__time message__time_is-img  {{#unless
+                        isRead}}message__time_is-not-read{{/unless}}{{#if
+                        isRead}}message__time_is-read{{/if}}">{{{date}}}</time>
             </div>
         {{/if}}
     {{/if}}
